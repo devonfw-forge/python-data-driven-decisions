@@ -3,7 +3,7 @@ Use Python, Pandas, Spark etc to demontrate that correlation can be used as a ba
 
 This project consists of finding the correlation between the GDP (Gross Domestic Product) and social and economical indicators, such as population growth, fertility rates, investment in specific sectors or prices.
 
-The study is going to be based on the data from [FAOSTAT] (https://www.fao.org/faostat/en/#home), updated on May 30, 2022.
+The study is going to be based on the data from FAOSTAT (https://www.fao.org/faostat/en/#home), updated on May 30, 2022.
 
 The tools used are going to be Python, Pandas and Spark.
 
