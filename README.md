@@ -10,7 +10,6 @@ The tools used are going to be Python, Pandas and Spark.
 The main steps to follow are going to be:
 
 1- Extract the data from FAO.
-Data extraction.ipynb
 
 2- Join the different files.
 
