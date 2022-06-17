@@ -2,6 +2,7 @@
 Data
 FAOSTAT.zip
 *.csv
+RawNormalized
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
