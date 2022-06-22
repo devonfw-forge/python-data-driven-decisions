@@ -1,15 +1,15 @@
 # python-data-driven-decisions
-Use Python, Pandas, Spark etc to demontrate that correlation can be used as a basis for decision making.
+Use Python, Pandas, Apache Spark and similars to demontrate that correlation can be used as a basis for decision making.
 
-This project consists of finding the correlation between the GDP (Gross Domestic Product) and social and economical indicators, such as population growth, fertility rates, investment in specific sectors or prices.
+This project consists of finding the correlation between the GDP (Gross Domestic Product) and social as well as economical indicators, such as population growth, fertility rates, investment in specific sectors or prices.
 
-The study is going to be based on the data from FAOSTAT (https://www.fao.org/faostat/en/#home), updated on May 30, 2022.
+The study is going to be based on the data from World Bank (https://www.worldbank.org/en/home), updated on June 22, 2022.
 
-The tools used are going to be Python, Pandas and Spark.
+The tools used are going to be Python, Pandas and Apache Spark.
 
 The main steps to follow are going to be:
 
-1- Extract the data from FAO.
+1- Extract the data from World Bank website.
 
 2- Join the different files.
 
