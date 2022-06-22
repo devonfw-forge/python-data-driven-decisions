@@ -1,0 +1,23 @@
+# Data Normalization
+
+In this section it will be explained how the data has been normalized.
+
+All the files.csv used in the project use different formats to present the data and for this reason the tables have to be adjusted. For example, 
+in FAOSTAT countries are collected under the column of "Area", whereas in Databank is "Country". Through Python all columns will be renamed to 
+use a common name among all files.
+
+#########INSERT PYTHON CODE EXAMPLE#############
+
+The format of the tables will be the following:
+
+Country | Year | Indicator | Value
+
+# Data Integration
+
+On the other hand, the integration is an easier process. Consists in merging the different normalized files in to a single csv containing all
+the data.
+
+
+#########INSERT PYTHON CODE EXAMPLE#############
+
+To see the visual representation of this explanation acces te file "model-definition-diagram".
