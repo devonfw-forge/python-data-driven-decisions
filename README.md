@@ -3,7 +3,7 @@ Use Python, Pandas, Apache Spark and similars to demontrate that correlation can
 
 This project consists of finding the correlation between the GDP (Gross Domestic Product) and social as well as economical indicators, such as population growth, fertility rates, investment in specific sectors or prices.
 
-The study is going to be based on the data from World Bank (https://www.worldbank.org/en/home), updated on June 22, 2022.
+The study is going to be based on the data from [World Bank](https://www.worldbank.org/en/home), updated on June 22, 2022.
 
 The tools used are going to be Python, Pandas and Apache Spark.
 
