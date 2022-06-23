@@ -132,3 +132,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 FAO attempt.ipynb
+*.csv
+README - Copy.md
