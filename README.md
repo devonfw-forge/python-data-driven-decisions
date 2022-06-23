@@ -9,7 +9,7 @@ The tools used are going to be Python, Pandas and Apache Spark.
 
 The main steps to follow are going to be:
 
-1- Extract the data from World Bank website.
+1- Extract the data from World Bank website. [Data extraction](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-the-big-three/Data%20extraction.ipynb)
 
 2- Join the different files.
 
