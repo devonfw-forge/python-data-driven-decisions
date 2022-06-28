@@ -49,4 +49,4 @@ In order to check the veracity of this hypothesis the following steps are going 
 9) Report
 
 
-![image](https://github.com/devonfw-forge/python-data-driven-decisions/blob/9eee9a191e18f9a9adb92df8f3803e9c6a81b8b4/model-definition-diagram.png)
+![image](https://github.com/devonfw-forge/python-data-driven-decisions/blob/aaa43f45b6e6f46b5596aefec8942fa4f2131aad/model-definition-diagram%20(1).png)
