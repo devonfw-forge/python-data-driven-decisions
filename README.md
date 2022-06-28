@@ -41,8 +41,11 @@ Start the Event Ingestion process with the command:
 
 ## Repository setup
 main.py: Main entrypoint for creating + configuring the Spark session and launching the process.
+
 orchestrator: Contains each of the processing steps of the pipeline. Responsible of managing the load, process and store of the results.
+
 normalizer: Validates and normalizes raw input data. Creates extra columns and renames/formats to align with the normalized events.
+
 processor: Runs the queries over the input datframes to produce the expected outputs.
 
 # Contributing
