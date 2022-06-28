@@ -11,7 +11,7 @@ The main steps to follow are going to be:
 
 1- Extract the data from World Bank website. ([Data extraction](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-the-big-three/Data%20extraction.ipynb))
 
-2- Filter and clean information.
+2- Filter and clean information. ([Data integration] (WDI-Data integration.ipynb))
 
 3- Build a complete data table organized by categories (year, country, indicator...).
 
