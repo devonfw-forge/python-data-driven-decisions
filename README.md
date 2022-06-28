@@ -13,7 +13,7 @@ The main steps to follow are going to be:
 
 2- Filter and select the data we work with to build a complete data table organized by categories (year, country, indicator...). ([Data integration] (https://github.com/devonfw-forge/python-data-driven-decisions/blob/26742264d0f18cd3b3ef80e677df996c3706570b/WDI-Data%20integration.ipynb))
 
-3- Normalize data. 
+3- Normalize data. ([Data Normalization] (https://github.com/devonfw-forge/python-data-driven-decisions/blob/26742264d0f18cd3b3ef80e677df996c3706570b/WDI-Data%20normalization.ipynb))
 
 4- Perform statistical analysis (through coefficients and graphs).
 
