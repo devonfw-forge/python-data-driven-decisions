@@ -24,4 +24,19 @@ The main steps to follow are going to be:
 7- Get quantitative and qualitative conclusions. 
 
 
-The record of this project is going to be done weekly (and can be found in the Wiki section). Besides, an in-depth explanation of the programming part can be found on the code file itself. 
+The record of this project is going to be done weekly (and can be found in the Wiki section). Besides, an in-depth explanation of the programming part can be found on the code file itself.
+
+# Run the application
+## Dependencies
+Dependecies are automatically managed by Poetry and there is NO need to use external dockers for running spark.
+
+To install dependencies run: `poetry install` in same folder where your .toml file is located. 
+
+Poetry will take care of:
+
+- Installing the required Python interpreter
+- Installing all the libraries and modules
+- Creating the virtual environment for you
+
+# Contributing
+Open to new improvements/changes 🚀 Just feel free to fork this repository and open a PR back with any changes!
