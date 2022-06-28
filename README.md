@@ -35,6 +35,8 @@ Poetry will take care of:
 - Installing the required Python interpreter
 - Installing all the libraries and modules
 - Creating the virtual environment for you
+## Running on local
+Start the Event Ingestion process with the command:
 
 # Contributing
 Open to new improvements/changes 🚀 Just feel free to fork this repository and open a PR back with any changes!
