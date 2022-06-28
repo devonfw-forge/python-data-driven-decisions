@@ -1,3 +1,7 @@
+# Data utilise in the project, "Data is the name of the folder
+Data
+FAOSTAT.zip
+*.csv
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -127,5 +131,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+FAO attempt.ipynb
 *.csv
 README - Copy.md
