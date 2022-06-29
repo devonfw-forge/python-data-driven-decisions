@@ -9,11 +9,11 @@ The tools used are going to be Python, Pandas and Apache Spark.
 
 The main steps to follow are going to be:
 
-1- Extract the data from World Bank website. ([Data extraction](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-the-big-three/Data%20extraction.ipynb))
+1- [Data extraction](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-the-big-three/Data%20extraction.ipynb): Extract the data from World Bank website. 
 
-2- Filter and select the data we work with to build a complete data table organized by categories (year, country, indicator...). [(Data integration](https://github.com/devonfw-forge/python-data-driven-decisions/blob/26742264d0f18cd3b3ef80e677df996c3706570b/WDI-Data%20integration.ipynb))
+2- [Data integration](https://github.com/devonfw-forge/python-data-driven-decisions/blob/26742264d0f18cd3b3ef80e677df996c3706570b/WDI-Data%20integration.ipynb): Filter and select the data we work with to build a complete data table organized by categories (year, country, indicator...). 
 
-3- Normalize data. ([Data Normalization](https://github.com/devonfw-forge/python-data-driven-decisions/blob/26742264d0f18cd3b3ef80e677df996c3706570b/WDI-Data%20normalization.ipynb))
+3- [Data Normalization](https://github.com/devonfw-forge/python-data-driven-decisions/blob/26742264d0f18cd3b3ef80e677df996c3706570b/WDI-Data%20normalization.ipynb): Normalize data.
 
 4- Perform statistical analysis (through coefficients of correlations and graphs).
 
