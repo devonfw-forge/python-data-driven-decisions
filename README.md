@@ -7,11 +7,11 @@ The study is going to be based on the data from [World Bank](https://www.worldba
 
 The tools used are going to be Python, Pandas and Apache Spark.
 
-The main steps to follow are going to be:
+## The main steps to follow are going to be:
 
-1- [Data extraction](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-the-big-three/Data%20extraction.ipynb): Extract the data from World Bank website. 
+1- [Data extraction][(https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-the-big-three/Data%20extraction.ipynb)](https://github.com/devonfw-forge/python-data-driven-decisions/blob/eee0b8391a056ab4836dd705f621c3be6898c865/WDI-Data%20extraction.ipynb): Extract the data from World Bank website. 
 
-2- [Data integration](https://github.com/devonfw-forge/python-data-driven-decisions/blob/26742264d0f18cd3b3ef80e677df996c3706570b/WDI-Data%20integration.ipynb): Filter and select the data we work with to build a complete data table organized by categories (year, country, indicator...). 
+2- [Data integration][(https://github.com/devonfw-forge/python-data-driven-decisions/blob/26742264d0f18cd3b3ef80e677df996c3706570b/WDI-Data%20integration.ipynb)](https://github.com/devonfw-forge/python-data-driven-decisions/blob/2c7a16a66eb542d860c5efe5f31b4c287bac912f/WDI-Data%20integration.ipynb): Filter and select the data we work with to build a complete data table organized by categories (year, country, indicator...). 
 
 3- [Data Normalization](https://github.com/devonfw-forge/python-data-driven-decisions/blob/26742264d0f18cd3b3ef80e677df996c3706570b/WDI-Data%20normalization.ipynb): Normalize data.
 
