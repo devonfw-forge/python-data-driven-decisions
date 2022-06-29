@@ -7,7 +7,7 @@ The study is going to be based on the data from [World Bank](https://www.worldba
 
 The tools used are going to be Python, Pandas and Apache Spark.
 
-The main steps to follow are going to be:
+## The main steps to follow are going to be:
 
 1- [Data extraction](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-the-big-three/Data%20extraction.ipynb): Extract the data from World Bank website. 
 
