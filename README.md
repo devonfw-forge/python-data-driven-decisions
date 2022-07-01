@@ -30,6 +30,8 @@ For this analysis there have been some assumptions taken, as well as some crucia
 
 To visualize the interquartile range, imagine dividing your data into quarters. Statisticians refer to these quarters as quartiles and label them from low to high as Q1, Q2, Q3, and Q4. The lowest quartile (Q1) covers the smallest quarter of values in your dataset. The upper quartile (Q4) comprises the highest quarter of values. The interquartile range is the middle half of the data that lies between the upper and lower quartiles. In other words, the interquartile range includes the 50% of data points that are above Q1 and below Q4. The IQR is the red area in the graph below, containing Q2 and Q3 (not labeled).
 
+![IQR](https://i0.wp.com/statisticsbyjim.com/wp-content/uploads/2018/03/interquartile_range.png?w=576&ssl=1 )
+
 When measuring variability, statisticians prefer using the interquartile range instead of the full data range because extreme values and outliers affect it less. Typically, use the IQR with a measure of central tendency, such as the median, to understand your data’s center and spread. This combination creates a fuller picture of your data’s distribution.
 
 Therefore it is being utilized to get rid of all the outliers that may come from errors when creating the data or from unexpected years.
