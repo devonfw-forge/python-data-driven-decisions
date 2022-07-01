@@ -48,6 +48,22 @@ Poetry will take care of:
 - Installing all the libraries and modules
 - Creating the virtual environment for you
 
+## Libraries
+
+- `os`, this module in Python provides functions for interacting with the operating system. OS comes under Python’s standard utility modules. This module provides a portable way of using operating system-dependent functionality. The *os* and *os.path* modules include many functions to interact with the file system. It is used to access to the directories used in each of the notebooks.
+- The `glob` module is used to retrieve files/pathnames matching a specified pattern. The pattern rules of glob follow standard Unix path expansion rules. It is also predicted that according to benchmarks it is faster than other methods to match pathnames in directories.
+
+- `pandas`  is a Python package that provides fast, flexible, and expressive data structures designed to make working with "relational" or "labeled" data both easy and intuitive. It aims to be the fundamental high-level building block for doing practical, real world data analysis in Python. Additionally, it has the broader goal of becoming the most powerful and flexible open source data analysis / manipulation tool available in any language. It is already well on its way towards this goal.
+- `numpy` is a Python library used for working with arrays. It also has functions for working in domain of linear algebra, fourier transformations, and matrices. It is the base for `pandas`.
+
+- From `scipy` import `stats` and `shapiro`. Scipy provides algorithms for optimization, integration, interpolation, eigenvalue problems, algebraic equations, differential equations, statistics and many other classes of problems. Extends NumPy providing additional tools for array computing and provides specialized data structures, such as sparse matrices and k-dimensional trees. Mainly used for statistical calculations.
+
+- The `plotly.express`  module (usually imported as px) contains functions that can create entire figures at once, and is referred to as Plotly Express or PX. Plotly Express is a built-in part of the plotly library, and is the recommended starting point for creating most common figures. Every Plotly Express function uses graph objects internally and returns a plotly.graph_objects.Figure instance. Throughout the plotly documentation, you will find the Plotly Express way of building figures at the top of any applicable page, followed by a section on how to use graph objects to build similar figures. Therefore it will allow for interacting graphs.
+- `seaborn` is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics. Used for the correlations matrix. 
+
+- The `requests` library is the de facto standard for making HTTP requests in Python. It abstracts the complexities of making requests behind a beautiful, simple API so that you can focus on interacting with services and consuming data in your application. It allows for downloading data from the websites.
+
+
 ## Running on local
 Start the Event Ingestion process with the command:
 
