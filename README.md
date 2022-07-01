@@ -34,7 +34,7 @@ When measuring variability, statisticians prefer using the interquartile range i
 
 Therefore it is being utilized to get rid of all the outliers that may come from errors when creating the data or from unexpected years.
 
-2- **Substitution of the NaN values**. The Nan values´ treatment develop has been a mix, between the linear interpolation and backwards filling. The linear interpolation a form of interpolation, which involves the generation of new values based on an existing set of values. Linear interpolation is achieved by geometrically rendering a straight line between two adjacent points on a graph or plane. Whereas the backwards filling, will help us to arrive to those values which have not been fullfilled with the linear interpolation.
+2- **Substitution of the NaN values**. The Nan values´ treatment developed has been a mix, between the linear interpolation and backwards filling. The linear interpolation a form of interpolation, which involves the generation of new values based on an existing set of values. Linear interpolation is achieved by geometrically rendering a straight line between two adjacent points on a graph or plane. Whereas the backwards filling, will help us to arrive to those values which have not been fullfilled with the linear interpolation.
 
 # Run the application
 ## Dependencies
