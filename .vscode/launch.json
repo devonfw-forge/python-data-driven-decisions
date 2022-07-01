@@ -8,7 +8,7 @@
             "name": "Python: Module",
             "type": "python",
             "request": "launch",
-            "module": "command:extension.commandvariable.file.relativeDirDots.command:extension.commandvariable.file.relativeDirDots.{fileBasenameNoExtension}"
+            "module": "${command:extension.commandvariable.file.relativeDirDots}.${fileBasenameNoExtension}"
         }
     ]
 }

@@ -1,6 +1,6 @@
 import pandas as pd
 
-from Utils.rename_value_column import rename_value_column
+from Project.Utils.rename_value_column import rename_value_column
 
 
 def preprocess (dataframe, columns_index, indicators, columns_rename, year_range = (1990,2020),treatment = '', melt_on_value = None, rename_value_columns = False, inplace = False):
