@@ -15,15 +15,15 @@ from Project.Utils.preprocess import preprocess
 
 def read_databases(read_path: str, special_source = None, verbose = False):
 
-    url_list = []
-    discarded_urls = []
-    data_list = []
+    #url_list = []
     data_dict = {}
+    discarded_urls = []
+    
     
     for element in listdir(read_path):
             url = join(read_path, element)
             if isfile(url) and url.endswith('.csv'):
-                url_list.append(url)
+                #url_list.append(url)
                 if 'WID' in url:
                     continue
                 try:
@@ -44,8 +44,7 @@ def read_databases(read_path: str, special_source = None, verbose = False):
                         print('Unexpected error when preprocessing the dataframe: ' + url)
                         discarded_urls.append(url)
                     else:
-                        url_list.append(url)
-                        data_list.append(dataframe)
+                        #url_list.append(url)
                         data_dict[url] = dataframe
 
     if len(discarded_urls) > 0:
@@ -55,10 +54,10 @@ def read_databases(read_path: str, special_source = None, verbose = False):
             warnings.warn(warn)                    
                         
     if (verbose):
-        for data in data_list:
+        for data in data_dict.values():
             print(data)
             print('\n' + '----------------------------------------------------------' + '\n')
-    else:
-        print('Done')
+    #else:
+    #    print('Done')
     
-    return data_dict, data_list
+    return data_dict

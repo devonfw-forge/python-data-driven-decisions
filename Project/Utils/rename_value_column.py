@@ -1,4 +1,4 @@
-def rename_value_column(dataframe, column_value = None, column_indicator = None, row_index = 1, inplace = False):
+def rename_value_column(dataframe, column_value = None, column_indicator = None, indicator_index = 1, row_index = 1, inplace = False):
     """
         Method that takes a dataframe and renames the value column with the name of the indicator
         
@@ -9,6 +9,10 @@ def rename_value_column(dataframe, column_value = None, column_indicator = None,
                 the name of the column that contains the values and whose name will be changed. If not specified, it will try to search for it
             column_indicator: str, default None
                 the name of the column that contains the name of the indicator of the dataframe. If not specified, it will try to search for it
+            indicator_index: int, default 1
+                the index of the line where the indicator name will be fetched from
+            row_index: int, default 1
+                0 to apply the changes to the rows, 1 to apply the changes to the columns
             inplace: bool, default False
                 determines if the changes will be made in the same dataframe or returned as a result
         
