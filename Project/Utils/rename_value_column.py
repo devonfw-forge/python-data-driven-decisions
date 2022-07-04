@@ -45,6 +45,6 @@ def rename_value_column(dataframe, column_value = None, column_indicator = None,
     if not column_value:
         raise Exception('Unable to determine value column')
         
-    dataframe.rename(columns = {column_value: dataframe.loc[:, column_indicator][1]}, inplace = inplace)
+    dataframe.rename(columns = {column_value: dataframe.loc[:, column_indicator][indicator_index]}, inplace = inplace)
     
     return dataframe if not inplace else None
