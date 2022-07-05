@@ -22,9 +22,9 @@ The tools used are going to be Python, Pandas and Apache Spark.
 
 The record of this project is going to be done weekly (and can be found in the Wiki section). Besides, an in-depth explanation of the programming part can be found on the code file itself.
 
-## Assumptions
+## Assumptions & theory used
 
-For this analysis there have been some assumptions taken, as well as some crucial steps in cleaning the data.
+For this analysis there have been some assumptions taken, as well as some  theoretical steps that have been crucial in cleaning the data.
 
 1- **IQR** . The interquartile range (IQR) measures the spread of the middle half of your data. It is the range for the middle 50% of a sample, so we use the IQR to assess the variability where most of our values lie. Larger values indicate that the central portion of our data spread out further. Conversely, smaller values show that the middle values cluster more tightly.
 
