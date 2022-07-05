@@ -21,10 +21,13 @@ def main():
     #    preprocess(df, columns_index, indicators, columns_rename, year_range, inplace = True)
     data_list = list(dict_dataframes.values())
     df = merge_data(data_list, columns_index)
-
+    
     country_divider(df, dict_df_countries)
 
     dict_df_countries['Spain'].to_csv(write_path + '/Finaldf.csv')
+
+    print(dict_df_countries.get('Spain').corr())
+
 
 
 

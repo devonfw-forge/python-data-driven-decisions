@@ -137,7 +137,8 @@ def preprocess (dataframe: pd.DataFrame, columns_index, columns_rename,*, year_r
     dataframe.drop(dataframe[dataframe[column_year] < year_min].index, inplace=True)
 
     #Cast all indicators values to numeric
-    dataframe[dataframe.columns[2:]] = dataframe[dataframe.columns[2:]].apply(pd.to_numeric, errors='ignore')
+    #dataframe[dataframe.columns[2:]] = dataframe[dataframe.columns[2:]].apply(pd.to_numeric, errors='ignore')
+    dfs = dataframe.apply(pd.to_numeric, errors = 'ignore')
 
     
-    return dataframe
+    return dfs
