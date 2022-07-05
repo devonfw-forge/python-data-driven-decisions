@@ -1,9 +1,9 @@
 # Execute the project
 
-1) Download databases.zip and Python_Code.ipynb
+1) Download databases.zip and Project
 2) Unzip databases in a folder
-3) Open Python_Code.ipynb in Jupyter Notebook
-4) Run the whole project
+3) Open Project with Visual Studio code
+4) Run the whole project via the main class
 
 
 # Explanation of the followed process
@@ -48,5 +48,14 @@ In order to check the veracity of this hypothesis the following steps are going 
 
 9) Report
 
-
 ![image](https://github.com/devonfw-forge/python-data-driven-decisions/blob/aaa43f45b6e6f46b5596aefec8942fa4f2131aad/model-definition-diagram%20(1).png)
+
+#Run the application
+#Poetry
+All dependencies are controled by Poetry by simply executing the command "poetry install" in the same folder.
+
+## Running on local
+To execute the code you can download the code project and databases.zip and open it with Visual Studio Code. Run the main class.
+
+## Repository setup
+All the code is separated in multiple python modules. The main class call all the necesary modules in order to make the application work properly.
