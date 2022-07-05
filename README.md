@@ -50,8 +50,8 @@ In order to check the veracity of this hypothesis the following steps are going 
 
 ![image](https://github.com/devonfw-forge/python-data-driven-decisions/blob/aaa43f45b6e6f46b5596aefec8942fa4f2131aad/model-definition-diagram%20(1).png)
 
-#Run the application
-#Poetry
+# Run the application
+## Poetry
 All dependencies are controled by Poetry by simply executing the command "poetry install" in the same folder.
 
 ## Running on local
