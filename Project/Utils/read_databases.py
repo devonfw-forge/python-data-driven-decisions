@@ -95,8 +95,10 @@ def read_databases(read_path: str, special_source = None, verbose = False):
                         if source in url.lower():
                             special = source
                             break
+                    dataframe = preprocess(dataframe, columns_index, columns_rename, treatment = special)
                     try:
-                        dataframe = preprocess(dataframe, columns_index, columns_rename, treatment = special)
+                        #dataframe = preprocess(dataframe, columns_index, columns_rename, treatment = special)
+                        i=1
                     except Exception as e:
                         print('Unexpected error when preprocessing the dataframe: ' + url)
                         discarded_urls.append(url)
