@@ -1,6 +1,7 @@
 
 
 import os
+from sys import displayhook
 from Project.Utils.merge_data import merge_data
 from Project.Utils.preprocess import preprocess
 
@@ -26,7 +27,7 @@ def main():
 
     dict_df_countries['Spain'].to_csv(write_path + '/Finaldf.csv')
 
-    print(dict_df_countries.get('Spain').corr())
+    
 
 
 

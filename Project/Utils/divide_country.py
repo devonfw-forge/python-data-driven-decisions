@@ -31,4 +31,5 @@ def country_divider(df, dict_df_countries):
         #Treat the dataframe
         df = dict_df_countries[country]
         df = iqr_treatment(df)
+        df.set_index(['Country', 'Year'], inplace=True)
         dict_df_countries[country] = nan_treatment(df)
