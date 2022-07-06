@@ -2,6 +2,8 @@ import pandas as pd
 
 from Project.Utils.rename_value_column import rename_value_column
 
+from Project.Utils.data_treat import iqr_treatment, nan_treatment
+
 indicators = {
     
     #databank
@@ -129,8 +131,14 @@ def preprocess (dataframe: pd.DataFrame, columns_index, columns_rename,*, year_r
     dataframe[column_country] = dataframe[column_country].str.strip()
     dataframe.replace(['..'], '', inplace=True)
     
+
     #Narrow the range of the data to the years selected
     dataframe[column_year]= dataframe[column_year].astype(int)
     dataframe.drop(dataframe[dataframe[column_year] < year_min].index, inplace=True)
+
+    #Cast all indicators values to numeric
+    #dataframe[dataframe.columns[2:]] = dataframe[dataframe.columns[2:]].apply(pd.to_numeric, errors='ignore')
+    dfs = dataframe.apply(pd.to_numeric, errors = 'ignore')
+
     
-    return dataframe
+    return dfs
