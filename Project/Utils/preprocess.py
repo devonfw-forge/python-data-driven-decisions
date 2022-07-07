@@ -104,7 +104,7 @@ def preprocess (dataframe: pd.DataFrame, columns_index, columns_rename,*, year_r
             melt_on_value = dataframe.loc[:, 'Series Name'][1]
             dataframe.drop(['Series Name', 'Series Code', 'Country Code'], axis=1, inplace = True)
             
-    dataframe.rename(columns = columns_rename, inplace = True)
+    dataframe = dataframe.rename(columns = columns_rename)
     
     if rename_value_columns:
         rename_value_column(dataframe, inplace = True)

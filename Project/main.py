@@ -27,7 +27,7 @@ def main():
 
     dict_df_countries['Spain'].to_csv(write_path + '/Finaldf.csv')
 
-    
+    print(df.columns)
 
 
 
