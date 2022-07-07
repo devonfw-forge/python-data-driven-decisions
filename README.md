@@ -15,7 +15,7 @@ The tools used are going to be Python, Pandas and Apache Spark.
 
 3- [Data Normalization](https://github.com/devonfw-forge/python-data-driven-decisions/blob/2c7a16a66eb542d860c5efe5f31b4c287bac912f/WDI-Data%20normalization.ipynb): Normalize data.
 
-4- Perform statistical analysis (through coefficients of correlations and graphs).
+4- Perform statistical analysis (through coefficients of correlations and graphs for univariable studies and for multivariable, modeling).
 
 5- Basing on previous results, get quantitative and qualitative conclusions grouping by year(s) or region(s).
 
