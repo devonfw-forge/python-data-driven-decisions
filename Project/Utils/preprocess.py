@@ -3,6 +3,7 @@ import pandas as pd
 
 from Project.Utils.rename_value_column import rename_value_column
 
+from Project.Utils.data_treat import iqr_treatment, nan_treatment
 SPECIAL_SOURCE = ('databank', 'faostat', 'kaggle', 'un_data', 'worldbank', 'WID')
 
 write_path = os.getcwd() + '\Output' #Path to the folder you want to store the dataframes
@@ -144,4 +145,3 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename = N
     
     
     
-
