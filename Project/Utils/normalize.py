@@ -1,16 +1,13 @@
 
 import pandas as pd
 
-DEFAULT_YEAR_MIN = 1990
-DEFAULT_YEAR_MAX = 2020
-DEFAULT_RANGE = (DEFAULT_YEAR_MIN, DEFAULT_YEAR_MAX)
 
-def normalize(df: pd.DataFrame, columns_index, *, year_range = DEFAULT_RANGE, inplace = False):
+
+
+def normalize(df: pd.DataFrame, columns_index, *, inplace = False):
 
     
     column_country, column_year = columns_index
-    year_min, year_max = year_range
-
     
 
     for value in df[column_year]: #Normalize year format
@@ -28,8 +25,8 @@ def normalize(df: pd.DataFrame, columns_index, *, year_range = DEFAULT_RANGE, in
     df[column_country] = df[column_country].str.strip()
     df.replace(['..'], '', inplace = inplace)
     
-    #Narrow the range of the data to the years selected
+
     df[column_year]= df[column_year].astype(int)
-    df.drop(df[df[column_year] < year_min].index, inplace = inplace)
+    
     
     return df if not inplace else None
