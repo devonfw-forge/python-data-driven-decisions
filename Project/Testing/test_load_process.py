@@ -6,7 +6,7 @@ import unittest
 import pandas as pd
 from Project.Utils.preprocess import preprocess
 
-from Project.Utils.read_databases import read_databases
+from Project.Utils.read_data import read_data
 
 
 
@@ -67,7 +67,7 @@ indicators = {
 
 class TestLoadProcess(unittest.TestCase):
     
-    def test_un_data(self):
+    """ def test_un_data(self):
         file_path = 'C:\\Users\\smanoles\\Documents\\GitHub\\python-data-driven-decisions\\Databases\\UN_Data_Gini.csv'
         source = pd.read_csv(file_path)
         prevalue = source.count()
@@ -79,10 +79,17 @@ class TestLoadProcess(unittest.TestCase):
         self.assertIn('Gini', output_columns, 'GINI column not found')
         print(prevalue)
         print(postvalue)
-        self.assertNotEqual(prevalue, postvalue, 'No son iguales')
+        self.assertNotEqual(prevalue, postvalue, 'No son iguales') """
 
 
         #read_databases(read_path, special_source, False)
+    def test_melt(self):
+        file_path = 'c:/Users/vperezlo/Documents/GitHub/python-data-driven-decisions/Databases/DataBank-gender-equality-rating-CPIA.csv'
+        source = pd.read_csv(file_path)
+        tested = preprocess(file_path, source, ['Country', 'Year'], columns_rename = dict.fromkeys(['Area', 'Entity', 'Country or Area', 'Name', 'Country Name'], 'Country'), inplace = True)
+        print(tested)
+        self.assertListEqual(['Country', 'Year', 'Gender Equality'], list(tested.columns))
+
 
 if __name__ == '__main__':
     unittest.main()
