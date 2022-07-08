@@ -1,8 +1,15 @@
+import os #quitar cuando funcione
 import pandas as pd
 
 from Project.Utils.rename_value_column import rename_value_column
 
 from Project.Utils.data_treat import iqr_treatment, nan_treatment
+SPECIAL_SOURCE = ('databank', 'faostat', 'kaggle', 'un_data', 'worldbank', 'WID')
+
+write_path = os.getcwd() + '\Output' #Path to the folder you want to store the dataframes
+
+#DEFAULT_RENAME = ['Area', 'Entity', 'Country or Area', 'Name', 'Country Name']
+
 
 indicators = {
     
@@ -57,10 +64,12 @@ indicators = {
 
 }
 
-def preprocess (dataframe: pd.DataFrame, columns_index, columns_rename,*, year_range = (1990,2020), treatment = '', melt_on_value = None, rename_value_columns = False, inplace = False):
+def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename = None, treatment = '', melt_on_value = None, rename_value_columns = False, inplace = False):
     
     """
-        Take a dataframe, rearrange its columns or rows, rename them if needed, and return the resulting dataframe
+        Take a dataframe and reshape it to match the desired format.
+        Based on the source, rearrange its columns or rows and rename them if needed.
+        Return dataframe if inplace is False.
         
         PARAMETERS:
             dataframe: dataframe
@@ -78,67 +87,59 @@ def preprocess (dataframe: pd.DataFrame, columns_index, columns_rename,*, year_r
             DataFrame
                 Return the modified dataframe  
     """
-    
     column_country = columns_index[0]
     column_year = columns_index[1]
 
-    year_min = year_range[0]
+    df.to_csv(write_path + '/1.csv')
 
-    match treatment:
-        
-        case 'databank':
-            melt_on_value = dataframe.loc[:, 'Series Name'][1]
-            dataframe.drop(['Series Name', 'Series Code', 'Country Code'], axis=1, inplace = True)
-        
-        case 'faostat':
-            rename_value_columns = True
-        
-        case 'kaggle':            
-            dataframe.drop(['HDI Rank'], axis=1, inplace = True)
-            melt_on_value = 'Gender Inequality'
-        
-        case 'un_data':
-            dataframe = dataframe[pd.to_numeric(dataframe[column_year], errors='coerce').notnull()]
+    #year_min, year_max = year_range
 
-        case 'worldbank':
-            melt_on_value = dataframe.loc[:, 'Series Name'][1]
-            dataframe.drop(['Series Name', 'Series Code', 'Country Code'], axis=1, inplace = True)
-            
-    dataframe = dataframe.rename(columns = columns_rename)
+    for treatment in SPECIAL_SOURCE:
+        if treatment in url.lower():                    #Any way to do it more efficiently?
+            match treatment:
+                
+                case 'databank':
+                    melt_on_value = df.loc[:, 'Series Name'][1]
+                    df.drop(['Series Name', 'Series Code', 'Country Code'], axis=1, inplace = inplace)
+                
+                case 'faostat':
+                    rename_value_columns = True
+                
+                case 'kaggle':            
+                    df.drop(['HDI Rank'], axis=1, inplace = inplace)
+                    melt_on_value = 'Gender Inequality'
+                
+                case 'un_data':
+                    df = df[pd.to_numeric(df[column_year], errors='coerce').notnull()] #Here or in normalize?
+
+                case 'worldbank':
+                    melt_on_value = df.loc[:, 'Series Name'][1]
+                    df.drop(['Series Name', 'Series Code', 'Country Code'], axis=1, inplace = inplace)
+            break
+    #if not columns_rename:
+        #columns_rename = dict.fromkeys(DEFAULT_RENAME: column_country)        
+    df.to_csv(write_path + '/2.csv')
     
+    df.rename(columns = columns_rename, inplace = inplace)
+
+    df.to_csv(write_path + '/3.csv')
+
     if rename_value_columns:
-        rename_value_column(dataframe, inplace = True)
-    
+        rename_value_column(df, inplace = inplace)
+
     if melt_on_value:
-        dataframe = pd.melt(dataframe, id_vars=column_country, var_name = column_year, value_name = melt_on_value)
-    
-    for value in dataframe[column_year]: #Normalize year format
-                if type(value) is not int and len(value) > 4:
-                    dataframe[column_year].replace({value: str(value[:4])}, inplace = True)
-    
-    for column in dataframe.columns: #Drop completely empty columns
-                if (len(dataframe.loc[:, column].value_counts()) == 1):
-                    dataframe.drop(column, axis=1, inplace = True) 
-    
-    #Shorten indicators column name and remove all the other columns except for the index columns
-    dataframe.rename(columns = indicators, inplace = True)
-    dataframe.drop(dataframe.columns.difference(list(columns_index) + list(indicators.values())), axis = 1, inplace=True)
-    
-    #Remove rows with no country
-    dataframe.dropna(subset=column_country, inplace=True)
-    
-    #Normalize all countries name, removing blank spaces before and after the string
-    dataframe[column_country] = dataframe[column_country].str.strip()
-    dataframe.replace(['..'], '', inplace=True)
-    
+        df = pd.melt(df, id_vars = column_country, var_name = column_year, value_name = melt_on_value)
 
-    #Narrow the range of the data to the years selected
-    dataframe[column_year]= dataframe[column_year].astype(int)
-    dataframe.drop(dataframe[dataframe[column_year] < year_min].index, inplace=True)
+    df.to_csv(write_path + '/4.csv')
 
-    #Cast all indicators values to numeric
-    #dataframe[dataframe.columns[2:]] = dataframe[dataframe.columns[2:]].apply(pd.to_numeric, errors='ignore')
-    dfs = dataframe.apply(pd.to_numeric, errors = 'ignore')
-
+    df.rename(columns = indicators, inplace = inplace)
     
-    return dfs
+    df.drop(df.columns.difference(list(columns_index) + list(indicators.values())), axis = 1, inplace = inplace)
+    #df.drop(df.columns.difference(list(columns_index) + list(indicators.keys())), axis = 1, inplace=inplace)
+
+    df.to_csv(write_path + '/5.csv')
+
+    return df #if not inplace else None
+    
+    
+    

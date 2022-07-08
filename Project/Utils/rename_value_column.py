@@ -1,4 +1,9 @@
-def rename_value_column(dataframe, column_value = None, column_indicator = None, indicator_index = 1, row_index = 1, inplace = False):
+#If no column name specified, iterate over the list of possible names.
+
+COL_VALUES = ['Value']
+COL_INDICATORS = ['Item', 'Indicator']
+
+def rename_value_column(dataframe, *, column_value = None, column_indicator = None, indicator_index = 1, row_index = 1, inplace = False):
     """
         Method that takes a dataframe and renames the value column with the name of the indicator
         
@@ -23,27 +28,23 @@ def rename_value_column(dataframe, column_value = None, column_indicator = None,
         RAISES:
             Exception
                 If either column_value or column_indicator was not specified, and it was unable to find them itself 
-    """
-    
-    #If no column name specified, iterate over the list of possible names.
-    col_values = ['Value']
-    col_indicators = ['Item', 'Indicator']
+    """    
     
     #Try to find
     if not column_indicator:
-        for indicator in col_indicators:
+        for indicator in COL_INDICATORS:
             if indicator in dataframe:
                 column_indicator = indicator
     
     if not column_value:
-        for value in col_values:
+        for value in COL_VALUES:
             if value in dataframe:
                 column_value = value             
        
     if not column_indicator:
-        raise Exception('Unable to determine indicator column')
+        raise Exception('Unable to rename: could not determine indicator column')
     if not column_value:
-        raise Exception('Unable to determine value column')
+        raise Exception('Unable to rename: could not determine value column')
         
     dataframe.rename(columns = {column_value: dataframe.loc[:, column_indicator][indicator_index]}, inplace = inplace)
     
