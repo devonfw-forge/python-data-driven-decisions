@@ -1,11 +1,11 @@
-#If no column name specified, iterate over the list of possible names.
+import pandas as pd
 
 COL_VALUES = ['Value']
 COL_INDICATORS = ['Item', 'Indicator']
 
-def rename_value_column(dataframe, *, column_value = None, column_indicator = None, indicator_index = 1, row_index = 1, inplace = False):
+def rename_value_column(df: pd.DataFrame, *, column_value = None, column_indicator = None, indicator_index = 1, row_index = 1, inplace = False):
     """
-        Method that takes a dataframe and renames the value column with the name of the indicator
+        Rename the value column of a dataframe with the name of the indicator.
         
         PARAMETERS:
             dataframe: dataframe
@@ -30,22 +30,23 @@ def rename_value_column(dataframe, *, column_value = None, column_indicator = No
                 If either column_value or column_indicator was not specified, and it was unable to find them itself 
     """    
     
-    #Try to find
+    #If no column name specified, try to find the value column or the indicator column.
     if not column_indicator:
         for indicator in COL_INDICATORS:
-            if indicator in dataframe:
+            if indicator in df:
                 column_indicator = indicator
     
     if not column_value:
         for value in COL_VALUES:
-            if value in dataframe:
+            if value in df:
                 column_value = value             
-       
+
+    #If unable to find either column, raise an exception.   
     if not column_indicator:
         raise Exception('Unable to rename: could not determine indicator column')
     if not column_value:
         raise Exception('Unable to rename: could not determine value column')
         
-    dataframe.rename(columns = {column_value: dataframe.loc[:, column_indicator][indicator_index]}, inplace = inplace)
+    df.rename(columns = {column_value: df.loc[:, column_indicator][indicator_index]}, inplace = inplace)
     
-    return dataframe if not inplace else None
+    return df if not inplace else None

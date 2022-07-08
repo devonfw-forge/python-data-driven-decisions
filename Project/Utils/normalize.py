@@ -1,17 +1,25 @@
 
 import pandas as pd
 
-DEFAULT_YEAR_MIN = 1990
-DEFAULT_YEAR_MAX = 2020
-DEFAULT_RANGE = (DEFAULT_YEAR_MIN, DEFAULT_YEAR_MAX)
+def normalize(df: pd.DataFrame, columns_index, *, inplace = False):
 
-def normalize(df: pd.DataFrame, columns_index, *, year_range = DEFAULT_RANGE, inplace = False):
+    """ 
+        Standardize the formats of the cells of a DataFrame so it can be merged to others.
 
-    
-    column_country, column_year = columns_index
-    year_min, year_max = year_range
+        PARAMETERS:
+            df: pd.DataFrame,
+                The DataFrame to be standardized.
+            columns_index: list[str, str, ..., str] | (str, str, ..., str)
+                Structure of strings with the names of the columns that will be the index and need to be standardized.
+            inplace: bool, default = False
+                Wether it returns a copy or makes the changes in the DataFrame itself.
+        RETURNS:
+            DataFrame | None
+                The modified DataFrame if inplace is False
 
-    
+    """
+
+    column_country, column_year = columns_index    
 
     for value in df[column_year]: #Normalize year format
                 if type(value) is not int and len(value) > 4:
@@ -30,6 +38,5 @@ def normalize(df: pd.DataFrame, columns_index, *, year_range = DEFAULT_RANGE, in
     
     #Narrow the range of the data to the years selected
     df[column_year]= df[column_year].astype(int)
-    df.drop(df[df[column_year] < year_min].index, inplace = inplace)
     
     return df if not inplace else None

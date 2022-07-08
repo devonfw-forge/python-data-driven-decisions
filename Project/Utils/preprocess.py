@@ -1,14 +1,9 @@
-import os #quitar cuando funcione
 import pandas as pd
-
 from Project.Utils.rename_value_column import rename_value_column
 
 SPECIAL_SOURCE = ('databank', 'faostat', 'kaggle', 'un_data', 'worldbank', 'WID')
 
-write_path = os.getcwd() + '\Output' #Path to the folder you want to store the dataframes
-
-#DEFAULT_RENAME = ['Area', 'Entity', 'Country or Area', 'Name', 'Country Name']
-
+#indicators = {}
 
 indicators = {
     
@@ -63,10 +58,10 @@ indicators = {
 
 }
 
-def set_indicators(indicators: dict):
+def set_indicators(indicators: dict):           #Doesn't work properly
     indicators = indicators
 
-def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename = None, treatment = '', melt_on_value = None, rename_value_columns = False, inplace = False):
+def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename: dict = None, melt_on_value = None, rename_value_columns = False, inplace = False):
     
     """
         Take a dataframe and reshape it to match the desired format.
@@ -90,10 +85,6 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename = N
                 Return the modified dataframe  
     """
     column_country, column_year = columns_index
-
-    #df.to_csv(write_path + '/1.csv')
-
-    #year_min, year_max = year_range
 
     df = df.rename(columns = columns_rename)
 
@@ -119,11 +110,6 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename = N
                     melt_on_value = df.loc[:, 'Series Name'][1]
                     df.drop(['Series Name', 'Series Code', 'Country Code'], axis=1, inplace = inplace)
             break
-    #if not columns_rename:
-        #columns_rename = dict.fromkeys(DEFAULT_RENAME: column_country)        
-    #df.to_csv(write_path + '/2.csv')
-
-    #df.to_csv(write_path + '/3.csv')
 
     if rename_value_columns:
         rename_value_column(df, inplace = inplace)
@@ -131,14 +117,9 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename = N
     if melt_on_value:
         df = pd.melt(df, id_vars = column_country, var_name = column_year, value_name = melt_on_value)
 
-    #df.to_csv(write_path + '/4.csv')
-
     df.rename(columns = indicators, inplace = inplace)
     
     df.drop(df.columns.difference(list(columns_index) + list(indicators.values())), axis = 1, inplace = inplace)
-    #df.drop(df.columns.difference(list(columns_index) + list(indicators.keys())), axis = 1, inplace=inplace)
-
-    #df.to_csv(write_path + '/5.csv')
 
     return df #if not inplace else None
     
