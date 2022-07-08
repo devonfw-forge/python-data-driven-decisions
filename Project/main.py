@@ -1,9 +1,11 @@
 
 
 import os
+from sys import displayhook
 from Project.Utils.merge_data import merge_data
 from Project.Utils.preprocess import preprocess
 
+from Project.Utils.divide_country import country_divider
 from Project.Utils.read_data import read_data
 
 from Project.Utils.normalize import normalize
@@ -16,6 +18,7 @@ indicators = {}
 columns_rename = dict.fromkeys(['Area', 'Entity', 'Country or Area', 'Name', 'Country Name'], 'Country') #Dictionary to rename all the index columns so they have a common name
 
 year_range = range(1950, 2050)
+dict_df_countries = {} #Dictionary that relates each country to its dataframe
 
 def main():
     """ data_dict, _ = read_data(read_path)
@@ -40,6 +43,7 @@ def main():
     
     data_list = list(data_dict.values())
     df = merge_data(data_list, columns_index)
+    
     print(df) """
     data_dict, _ = read_data(read_path)
     #set_indicators(indicators)
@@ -47,6 +51,12 @@ def main():
     for url, df in data_dict.items():
         df = preprocess(url = url, df = df, columns_index = columns_index, columns_rename = columns_rename, inplace = True)
         df = normalize(df = df, columns_index = columns_index, inplace = True)  
+    
+    country_divider(df, dict_df_countries)
+
+    dict_df_countries['Spain'].to_csv(write_path + '/Finaldf.csv')
+
+    print(df.columns)
 
 if __name__ == '__main__':
     main()

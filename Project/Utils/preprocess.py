@@ -1,6 +1,7 @@
 import pandas as pd
 from Project.Utils.rename_value_column import rename_value_column
 
+from Project.Utils.data_treat import iqr_treatment, nan_treatment
 SPECIAL_SOURCE = ('databank', 'faostat', 'kaggle', 'un_data', 'worldbank', 'WID')
 
 #indicators = {}
@@ -125,4 +126,3 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename: di
     
     
     
-
