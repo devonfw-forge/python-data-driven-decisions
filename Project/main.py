@@ -21,7 +21,7 @@ year_range = range(1950, 2050)
 dict_df_countries = {} #Dictionary that relates each country to its dataframe
 
 def main():
-    data_dict, _ = read_data(read_path)
+    """ data_dict, _ = read_data(read_path)
     #for df in dict_dataframes.values():
     #    preprocess(df, columns_index, indicators, columns_rename, year_range, inplace = True)
     
@@ -44,15 +44,19 @@ def main():
     data_list = list(data_dict.values())
     df = merge_data(data_list, columns_index)
     
+    print(df) """
+    data_dict, _ = read_data(read_path)
+    #set_indicators(indicators)
+
+    for url, df in data_dict.items():
+        df = preprocess(url = url, df = df, columns_index = columns_index, columns_rename = columns_rename, inplace = True)
+        df = normalize(df = df, columns_index = columns_index, inplace = True)  
+    
     country_divider(df, dict_df_countries)
 
     dict_df_countries['Spain'].to_csv(write_path + '/Finaldf.csv')
 
     print(df.columns)
-
-
-
-
 
 if __name__ == '__main__':
     main()

@@ -64,6 +64,9 @@ indicators = {
 
 }
 
+def set_indicators(indicators: dict):
+    indicators = indicators
+
 def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename = None, treatment = '', melt_on_value = None, rename_value_columns = False, inplace = False):
     
     """
@@ -87,12 +90,13 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename = N
             DataFrame
                 Return the modified dataframe  
     """
-    column_country = columns_index[0]
-    column_year = columns_index[1]
+    column_country, column_year = columns_index
 
-    df.to_csv(write_path + '/1.csv')
+    #df.to_csv(write_path + '/1.csv')
 
     #year_min, year_max = year_range
+
+    df = df.rename(columns = columns_rename)
 
     for treatment in SPECIAL_SOURCE:
         if treatment in url.lower():                    #Any way to do it more efficiently?
@@ -118,11 +122,9 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename = N
             break
     #if not columns_rename:
         #columns_rename = dict.fromkeys(DEFAULT_RENAME: column_country)        
-    df.to_csv(write_path + '/2.csv')
-    
-    df.rename(columns = columns_rename, inplace = inplace)
+    #df.to_csv(write_path + '/2.csv')
 
-    df.to_csv(write_path + '/3.csv')
+    #df.to_csv(write_path + '/3.csv')
 
     if rename_value_columns:
         rename_value_column(df, inplace = inplace)
@@ -130,14 +132,14 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename = N
     if melt_on_value:
         df = pd.melt(df, id_vars = column_country, var_name = column_year, value_name = melt_on_value)
 
-    df.to_csv(write_path + '/4.csv')
+    #df.to_csv(write_path + '/4.csv')
 
     df.rename(columns = indicators, inplace = inplace)
     
     df.drop(df.columns.difference(list(columns_index) + list(indicators.values())), axis = 1, inplace = inplace)
     #df.drop(df.columns.difference(list(columns_index) + list(indicators.keys())), axis = 1, inplace=inplace)
 
-    df.to_csv(write_path + '/5.csv')
+    #df.to_csv(write_path + '/5.csv')
 
     return df #if not inplace else None
     
