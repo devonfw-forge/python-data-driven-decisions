@@ -90,6 +90,12 @@ class TestLoadProcess(unittest.TestCase):
         print(tested)
         self.assertListEqual(['Country', 'Year', 'Gender Equality'], list(tested.columns))
 
+    def test_iqr(self):
+        file_path = 'c:/Users/vperezlo/Documents/GitHub/python-data-driven-decisions/Output/IQR-test.csv'
+        source = pd.read_csv(file_path)
+        
+
+
 
 if __name__ == '__main__':
     unittest.main()
