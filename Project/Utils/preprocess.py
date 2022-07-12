@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from Project.Utils.rename_value_column import rename_value_column
 
@@ -88,7 +89,7 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename: di
     column_country, column_year = columns_index
 
     df = df.rename(columns = columns_rename)
-
+    
     for treatment in SPECIAL_SOURCE:
         if treatment in url.lower():                    #Any way to do it more efficiently?
             match treatment:
@@ -100,7 +101,10 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename: di
                 case 'faostat':
                     rename_value_columns = True
                 
-                case 'kaggle':            
+                case 'kaggle':
+                    for value in df['1995']: #Trim the a suffix
+                        if type(value) is not float and len(value) > 5:
+                            df['1995'].replace({value: str(value[:5])}, inplace = inplace)            
                     df.drop(['HDI Rank'], axis=1, inplace = inplace)
                     melt_on_value = 'Gender Inequality'
                 
@@ -121,7 +125,7 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename: di
     df.rename(columns = indicators, inplace = inplace)
     
     df.drop(df.columns.difference(list(columns_index) + list(indicators.values())), axis = 1, inplace = inplace)
-
+    
     return df #if not inplace else None
     
     
