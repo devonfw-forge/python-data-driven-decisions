@@ -69,6 +69,18 @@ Poetry will take care of:
 ## Running on local
 To start the execution of our code, you can directly run the notebooks on Visual Studio Code opening the files .ipynb, or with the command `poetry run jupyter notebook`.
 
+
+## Assumptions of Correlation Conclusions Study
+-In some graphs we have observed that data follows a very strict flow (very straight and without any deviation representation). In this case we have concluded that we are in front of a lack of data and the interpolation and backward filling have made that this phenomenon occurs. Moreover, these representations don't allow us to extraxt clear conclusions, in some cases they don't have any sense with reality.
+
+-The Net Migration indicator measures the difference between the number of immigrants and emigrants, so the number of people entering the country minus the number of people leaving it. As the difference is measured, it is necessary to see the original data to draw the conclusions correctly. Taking into account whether this net value is positive or negative and extract conclusions according the type of correlation. 
+
+-Something similar occurs with the indicator Direct Foreign Investment. This one shows us the    difference between outflows and inflows, so, if countries invest outside more or less than which is invested in them. Again we should see which are the net values to extract conclusions 	correctly. 
+
+-After treating the data, we realized that the indicators: Mortality Pollution and Gender Equality do not present sufficient data for analysis. Therefore, they have been eliminated. No conclusions will be drawn between this indicator and the countries. 
+ 
+
+ 
 ## Repository setup
 The code is divided in several notebooks that need to be excuted following the corresponding order, which coincides with the one described above in the main steps section.
 
