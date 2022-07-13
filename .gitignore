@@ -1,6 +1,3 @@
-# Data utilise in the project, "Data is the name of the folder
-FAOSTAT.zip
-*.csv
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
