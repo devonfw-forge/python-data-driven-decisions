@@ -13,9 +13,9 @@ The tools used are going to be Python, Pandas and Apache Spark.
 
 2- [Data integration](https://github.com/devonfw-forge/python-data-driven-decisions/blob/2c7a16a66eb542d860c5efe5f31b4c287bac912f/WDI-Data%20integration.ipynb): Filter and select the data we work with to build a complete data table organized by categories (year, country, indicator...). 
 
-3- [Data Normalization](https://github.com/devonfw-forge/python-data-driven-decisions/blob/2c7a16a66eb542d860c5efe5f31b4c287bac912f/WDI-Data%20normalization.ipynb): Normalize data.
+3- [Data normalization](https://github.com/devonfw-forge/python-data-driven-decisions/blob/2c7a16a66eb542d860c5efe5f31b4c287bac912f/WDI-Data%20normalization.ipynb): Normalize data.
 
-4- Perform statistical analysis (through coefficients of correlations and graphs for univariable studies and for multivariable, modeling).
+4- [Perform statistical analysis and visualization](https://github.com/devonfw-forge/python-data-driven-decisions/blob/7db85005073c68e3e9b8c9a7c5620748b6d755b5/Visualization%20of%20correlation%20(Global).ipynb): Through coefficients of correlations and graphs for univariable studies and for multivariable, modeling.
 
 5- Basing on previous results, get quantitative and qualitative conclusions grouping by year(s) or region(s).
 
