@@ -18,6 +18,7 @@ def standardize(df: pd.DataFrame, columns_index, *, inplace = False):
                 The modified DataFrame if inplace is False
 
     """
+    country_rename = {'United States of America': 'United States', 'Russian Federation': 'Russia', 'United Kingdom of Great Britain and Northern Ireland': 'United Kingdom'}
 
     column_country, column_year = columns_index    
 
@@ -37,6 +38,11 @@ def standardize(df: pd.DataFrame, columns_index, *, inplace = False):
     df[column_country]= df[column_country].astype(str)
     df.replace(['..'], '', inplace = inplace)
     
+    for country in country_rename.keys():
+        if country in df[column_country].to_list():
+            df = df.replace(to_replace = country, value = country_rename[country])
+
+
     #Narrow the range of the data to the years selected
     df[column_year]= df[column_year].astype(int)
 
