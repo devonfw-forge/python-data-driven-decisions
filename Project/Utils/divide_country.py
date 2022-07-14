@@ -1,3 +1,4 @@
+import os
 from Project.Utils.data_treat import iqr_treatment, nan_treatment
 
 
@@ -24,9 +25,14 @@ def country_divider(df, dict_df_countries):
     #Removes all the countries that do no meet the minimun entries requirement        
     dict_country = {country:num for country, num in dict_country.items() if num >= THRESHOLD}
 
+
+
     for country in dict_country.keys():
         dict_df_countries[country] = df.loc[df['Country'] == country]
-    
+        
+    write_path = os.getcwd() + '\Output' #Path to the folder you want to store the dataframes
+    dict_df_countries['Spain'].to_csv(write_path + '/Spaintest.csv')
+
     for country in dict_df_countries.keys():
         #Treat the dataframe
         df = dict_df_countries[country]
