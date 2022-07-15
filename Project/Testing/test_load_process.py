@@ -89,7 +89,7 @@ class TestLoadProcess(unittest.TestCase):
         print("hola")
         file_path = read_path + '/DataBank-gender-equality-rating-CPIA.csv'
         source = pd.read_csv(file_path)
-        tested = preprocess(file_path, source, ['Country', 'Year'], columns_rename = dict.fromkeys(['Area', 'Entity', 'Country or Area', 'Name', 'Country Name'], 'Country'), inplace = True)
+        tested = preprocess(file_path, source, ['Country', 'Year'], columns_rename = dict.fromkeys(['Area', 'Entity', 'Country or Area', 'Name', 'Country Name'], 'Country'))
         print(tested)
         self.assertListEqual(['Country', 'Year', 'Gender Equality'], list(tested.columns))
 
