@@ -1,10 +1,13 @@
 
 
 import os
+import sys
 import unittest
+import logging
 from numpy import not_equal
 
 import pandas as pd
+from pandas.testing import assert_frame_equal
 from Project.Utils.preprocess import preprocess
 from Project.Utils.data_treat import iqr_treatment, nan_treatment
 from Project.Utils.read_data import read_data
@@ -86,56 +89,33 @@ class TestLoadProcess(unittest.TestCase):
 
         #read_databases(read_path, special_source, False)
     def test_melt(self):
-        print("hola")
         file_path = read_path + '/DataBank-gender-equality-rating-CPIA.csv'
         source = pd.read_csv(file_path)
         tested = preprocess(file_path, source, ['Country', 'Year'], columns_rename = dict.fromkeys(['Area', 'Entity', 'Country or Area', 'Name', 'Country Name'], 'Country'), inplace = True)
-        print(tested)
+        #print(tested)
         self.assertListEqual(['Country', 'Year', 'Gender Equality'], list(tested.columns))
 
-    """ def test_data_treat(self):
-        file_path = write_path + '/BronzeDataframe.csv'
-        source = pd.read_csv(file_path)
+    def test_data_treat(self):
+        log = logging.getLogger('TestDataTreat')
+        log.setLevel(logging.DEBUG)
+        file_path = write_path  + '/BronzeDataframe.csv'
+
+        source = pd.read_csv(file_path) 
+
+        aux = source.loc[source['Country'] == 'Spain']
+        aux = iqr_treatment(aux)
+        aux = nan_treatment(aux)
+
+        for column in aux.columns[3:]:
+            self.assertNotEqual((aux[column].notna().sum() != len(aux)), (aux[column].isna().sum() != len(aux)), 'Error in data treat')
+        
+        auxRetreat = iqr_treatment(aux)
+
+        assert_frame_equal(aux, auxRetreat)
+            
+                            
 
 
-        df_countries = pd.read_csv(read_path + '/FAOSTAT_GDP.csv')
-        df_regions = pd.read_csv(read_path + '/AuxiliarData/world-regions.csv')
-        country_list = [] #List to insert all countries of the previous faostat csv and world regions
-
-        #Loop to insert all the possible different countries in to the list with the condition that has to be in both .csv of gdp countries and regions  
-        for country in df_countries['Area'][df_countries['Area'].isin(df_regions['Entity'])]:
-            if country not in country_list:
-                country_list.append(country)
-
-        #If is not in the list drop the country from the main dataframe.
-        for country in df['Country']:
-            if country not in country_list:
-                df.drop(df.loc[df['Country'] == country].index, inplace = True)
-
-
-
-
-
-
-
-        ################# Block of code copied from the notebook and modified#######################
-        final_df = pd.DataFrame()
-
-        for country in country_list:
-                aux = source[source['Country'] == country].copy()
-                for column in aux.columns[2:]:
-                        if(aux[column].isna().sum() > 5):
-                                aux[column] = np.nan 
-                aux = iqr_treatment(aux)
-                aux = nan_treatment(aux)
-
-                for column in aux.columns[2:]:
-                    if (len(aux[column].value_counts()) > 0) != len(aux):
-                         raise AssertionError('Error in data_treat')
-                    elif (len(aux[column].isna().sum()) > 0) != len(aux):
-                         raise AssertionError('Error in data_treat')
-
-                final_df = pd.concat([final_df, aux], axis = 0) """
 
                 
 
@@ -144,6 +124,7 @@ class TestLoadProcess(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    logging.basicConfig(stream=sys.stderr)
     unittest.main()
 
     #tambien puedes que no haya ningun nulo, assert para ver que todos los años sean ints, .....
