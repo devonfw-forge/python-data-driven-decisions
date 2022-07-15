@@ -3,7 +3,7 @@ import pandas as pd
 COL_VALUES = ['Value']
 COL_INDICATORS = ['Item', 'Indicator']
 
-def rename_value_column(df: pd.DataFrame, *, column_value = None, column_indicator = None, indicator_index = 1, row_index = 1, inplace = False):
+def rename_value_column(df: pd.DataFrame, *, column_indicator = None, column_value = None, indicator_index = 0):
     """
         Rename the value column of a dataframe with the name of the indicator.
         
@@ -31,22 +31,22 @@ def rename_value_column(df: pd.DataFrame, *, column_value = None, column_indicat
     """    
     
     #If no column name specified, try to find the value column or the indicator column.
-    if not column_indicator:
+    if column_indicator is None:
         for indicator in COL_INDICATORS:
             if indicator in df:
                 column_indicator = indicator
     
-    if not column_value:
+    if column_value is None:
         for value in COL_VALUES:
             if value in df:
                 column_value = value             
 
     #If unable to find either column, raise an exception.   
-    if not column_indicator:
+    if column_indicator is None:
         raise Exception('Unable to rename: could not determine indicator column')
-    if not column_value:
+    if column_value is None:
         raise Exception('Unable to rename: could not determine value column')
         
-    df.rename(columns = {column_value: df.loc[:, column_indicator][indicator_index]}, inplace = inplace)
+    df.rename(columns = {column_value: df.loc[:, column_indicator][indicator_index]}, inplace = True)
     
-    return df if not inplace else None
+    return df# if not inplace else None
