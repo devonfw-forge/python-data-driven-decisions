@@ -91,8 +91,8 @@ class TestLoadProcess(unittest.TestCase):
     def test_melt(self):
         file_path = read_path + '/DataBank-gender-equality-rating-CPIA.csv'
         source = pd.read_csv(file_path)
-        tested = preprocess(file_path, source, ['Country', 'Year'], columns_rename = dict.fromkeys(['Area', 'Entity', 'Country or Area', 'Name', 'Country Name'], 'Country'), inplace = True)
-        #print(tested)
+        tested = preprocess(file_path, source, ['Country', 'Year'], columns_rename = dict.fromkeys(['Area', 'Entity', 'Country or Area', 'Name', 'Country Name'], 'Country'))
+        print(tested)
         self.assertListEqual(['Country', 'Year', 'Gender Equality'], list(tested.columns))
 
     def test_data_treat(self):

@@ -60,10 +60,7 @@ indicators = {
 
 }
 
-def set_indicators(indicators: dict):           #Doesn't work properly
-    indicators = indicators
-
-def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename: dict = None, melt_on_value = None, rename_value_columns = False, inplace = False):
+def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename: dict = None, melt_on_value = None, rename_value_columns = False):
     
     """
         Take a dataframe and reshape it to match the desired format.
@@ -87,8 +84,9 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename: di
                 Return the modified dataframe  
     """
     column_country, column_year = columns_index
-
-    df = df.rename(columns = columns_rename)
+    
+    if columns_rename is not None:
+        df = df.rename(columns = columns_rename)
     
     for treatment in SPECIAL_SOURCE:
         if treatment in url.lower():                    #Any way to do it more efficiently?
@@ -96,7 +94,7 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename: di
                 
                 case 'databank':
                     melt_on_value = df.loc[:, 'Series Name'][1]
-                    df.drop(['Series Name', 'Series Code', 'Country Code'], axis=1, inplace = inplace)
+                    df.drop(['Series Name', 'Series Code', 'Country Code'], axis=1, inplace = True)
                 
                 case 'faostat':
                     rename_value_columns = True
@@ -104,27 +102,28 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename: di
                 case 'kaggle':
                     for value in df['1995']: #Trim the a suffix
                         if type(value) is not float and len(value) > 5:
-                            df['1995'].replace({value: str(value[:5])}, inplace = inplace)            
-                    df.drop(['HDI Rank'], axis=1, inplace = inplace)
+                            df['1995'].replace({value: str(value[:5])}, inplace = True)            
+                    if 'HDI Rank' in df.columns:
+                        df.drop(['HDI Rank'], axis=1, inplace = True)
                     melt_on_value = 'Gender Inequality'
                 
-                case 'un_data':
-                    df = df[pd.to_numeric(df[column_year], errors='coerce').notnull()] #Here or in normalize?
+                #case 'un_data':
+                    #df = df[pd.to_numeric(df[column_year], errors='coerce').notnull()] #Here or in normalize?
 
                 case 'worldbank':
-                    melt_on_value = df.loc[:, 'Series Name'][1]
-                    df.drop(['Series Name', 'Series Code', 'Country Code'], axis=1, inplace = inplace)
+                    melt_on_value = df.loc[:, 'Series Name'][0]
+                    df.drop(['Series Name', 'Series Code', 'Country Code'], axis=1, inplace = True)
             break
 
     if rename_value_columns:
-        rename_value_column(df, inplace = inplace)
+        rename_value_column(df)
 
     if melt_on_value:
         df = pd.melt(df, id_vars = column_country, var_name = column_year, value_name = melt_on_value)
 
-    df.rename(columns = indicators, inplace = inplace)
+    df.rename(columns = indicators, inplace = True)
     
-    df.drop(df.columns.difference(list(columns_index) + list(indicators.values())), axis = 1, inplace = inplace)
+    df.drop(df.columns.difference(list(columns_index) + list(indicators.values())), axis = 1, inplace = True)
     
     return df #if not inplace else None
     

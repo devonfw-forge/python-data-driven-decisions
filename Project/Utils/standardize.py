@@ -1,7 +1,7 @@
 
 import pandas as pd
 
-def standardize(df: pd.DataFrame, columns_index, *, inplace = False):
+def standardize(df: pd.DataFrame, columns_index):
 
     """ 
         Standardize the formats of the cells of a DataFrame so it can be merged to others.
@@ -24,19 +24,19 @@ def standardize(df: pd.DataFrame, columns_index, *, inplace = False):
 
     for value in df[column_year]: #Normalize year format
                 if type(value) is not int and len(value) > 4:
-                    df[column_year].replace({value: str(value[:4])}, inplace = inplace)
+                    df[column_year].replace({value: str(value[:4])}, inplace = True)
     
-    for column in df.columns: #Drop completely empty columns
+    """ for column in df.columns: #Drop completely empty columns
                 if (len(df.loc[:, column].value_counts()) == 1):
-                    df.drop(column, axis = 1, inplace = inplace)
+                    df.drop(column, axis = 1, inplace = inplace) """
     
     #Remove rows with no country
-    df.dropna(subset = column_country, inplace = inplace)
+    df.dropna(subset = column_country, inplace = True)
     
     #Normalize all countries name, removing blank spaces before and after the string
     df[column_country] = df[column_country].str.strip()
     df[column_country]= df[column_country].astype(str)
-    df.replace(['..'], '', inplace = inplace)
+    df.replace(['..'], '', inplace = True)
     
     for country in country_rename.keys():
         if country in df[column_country].to_list():
