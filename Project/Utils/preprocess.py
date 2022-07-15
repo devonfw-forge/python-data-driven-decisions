@@ -107,8 +107,8 @@ def preprocess (url: str, df: pd.DataFrame, columns_index, *, columns_rename: di
                         df.drop(['HDI Rank'], axis=1, inplace = True)
                     melt_on_value = 'Gender Inequality'
                 
-                #case 'un_data':
-                    #df = df[pd.to_numeric(df[column_year], errors='coerce').notnull()] #Here or in normalize?
+                case 'un_data':
+                    df = df[pd.to_numeric(df[column_year], errors='coerce').notnull()] #Here or in normalize?
 
                 case 'worldbank':
                     melt_on_value = df.loc[:, 'Series Name'][0]
