@@ -171,6 +171,17 @@ class Test_Bronze(unittest.TestCase):
         self.assertEqual(len(test_df_worldbank.columns), 3)
         self.assertIn(test_df_worldbank.columns[2], list(indicators.values()))
         
+    def test_index(self):
+        df1 = pd.read_csv(os.getcwd() + '/Output/SilverDataframe.csv')
+        df2 = pd.read_csv(os.getcwd() + '/Output/SilverDataframe.csv', index_col = ['Country', 'Year'])
+        print(df1)
+        print(df2)
+        df1.to_csv(os.getcwd() + '/Output/df1.csv')
+        df2.to_csv(os.getcwd() + '/Output/df2.csv')
+        df1.to_csv(os.getcwd() + '/Output/df1b.csv', index = False)
+        df2.to_csv(os.getcwd() + '/Output/df2b.csv', index = False)
+        
+
 if __name__ == '__main__':
     unittest.main()
 
