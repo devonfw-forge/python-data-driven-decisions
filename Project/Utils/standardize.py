@@ -43,11 +43,13 @@ def standardize(df: pd.DataFrame, columns_index):
             df = df.replace(to_replace = country, value = country_rename[country])
 
 
-    #Narrow the range of the data to the years selected
-    df[column_year]= df[column_year].astype(int)
+    #Convert all years to numbers
+    df = df[pd.to_numeric(df[column_year], errors='coerce').notnull()]
 
     #Convert all the indicators to numeric values, either int or float.
     #As the column country contains strings, it will be completely ignored.
     df = df.apply(pd.to_numeric, errors = 'ignore')
     
-    return df #if not inplace else None
+    df[column_country]= df[column_country].astype(str) #NO NOS HACE CASOOOOO
+
+    return df
