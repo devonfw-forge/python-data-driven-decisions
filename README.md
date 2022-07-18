@@ -7,11 +7,15 @@ The study is going to be based on the data from [World Bank](https://www.worldba
 
 The tools used are going to be Python, Pandas and Apache Spark.
 
-<img src="" width="20%" />
+<div>
 
-<img src="" width="10%" />
+<img src="https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-the-big-three/Logos/Python.png" width="25%" />
 
-<img src="" width="20%" align="right"/>
+<img src="https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-the-big-three/Logos/Pandas.jpg" width="40%"  />
+
+<img src="https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-the-big-three/Logos/pyspark.png" width="30%" align="right"/>
+
+</div>
 
 ## The main steps to follow are going to be:
 
