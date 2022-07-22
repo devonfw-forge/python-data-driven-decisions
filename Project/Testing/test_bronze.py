@@ -149,17 +149,34 @@ class Test_Bronze(unittest.TestCase):
         with self.assertRaises(Exception):
             test_df = rename_value_column(df, column_value = 'Quantity')
 
-
+    def test_preprocess_faostat(self):
+        df_faostat = df_preprocess_faostat.copy()
+        test_df_faostat = preprocess('faostat', df_faostat, columns_index)
+        np.testing.assert_array_equal(test_df_faostat.columns[:2], columns_index)
+        self.assertEqual(len(test_df_faostat.columns), 3)
+        self.assertIn(test_df_faostat.columns[2], list(indicators.values()))
     
-    def test_preprocess(self):
+    def test_preprocess_kaggle(self):
+        df_kaggle = df_preprocess_kaggle.copy()
+        test_df_kaggle = preprocess('kaggle', df_kaggle, columns_index)
+        np.testing.assert_array_equal(test_df_kaggle.columns[:2], columns_index)
+        self.assertEqual(len(test_df_kaggle.columns), 3)
+        self.assertIn(test_df_kaggle.columns[2], list(indicators.values()))
+    
+    def test_preprocess_worldbank(self):
+        df_worldbank = df_preprocess_worldbank.copy()
+        test_df_worldbank = preprocess('worldbank', df_worldbank, columns_index)
+        np.testing.assert_array_equal(test_df_worldbank.columns[:2], columns_index)
+        self.assertEqual(len(test_df_worldbank.columns), 3)
+        self.assertIn(test_df_worldbank.columns[2], list(indicators.values()))
+    
+    """ def test_preprocess(self):
         df_faostat = df_preprocess_faostat.copy()
         df_kaggle = df_preprocess_kaggle.copy()
         df_worldbank = df_preprocess_worldbank.copy()
         test_df_faostat = preprocess('faostat', df_faostat, columns_index)
         test_df_kaggle = preprocess('kaggle', df_kaggle, columns_index)
         test_df_worldbank = preprocess('worldbank', df_worldbank, columns_index)
-
-        #MIRAR QUE ESTÉN BIEN DECLARADOS LOS DATAFRAMES
 
         np.testing.assert_array_equal(test_df_faostat.columns[:2], columns_index)
         self.assertEqual(len(test_df_faostat.columns), 3)
@@ -169,20 +186,7 @@ class Test_Bronze(unittest.TestCase):
         self.assertIn(test_df_kaggle.columns[2], list(indicators.values()))
         np.testing.assert_array_equal(test_df_worldbank.columns[:2], columns_index)
         self.assertEqual(len(test_df_worldbank.columns), 3)
-        self.assertIn(test_df_worldbank.columns[2], list(indicators.values()))
+        self.assertIn(test_df_worldbank.columns[2], list(indicators.values())) """
         
-    def test_index(self):
-        df1 = pd.read_csv(os.getcwd() + '/Output/SilverDataframe.csv')
-        df2 = pd.read_csv(os.getcwd() + '/Output/SilverDataframe.csv', index_col = ['Country', 'Year'])
-        print(df1)
-        print(df2)
-        df1.to_csv(os.getcwd() + '/Output/df1.csv')
-        df2.to_csv(os.getcwd() + '/Output/df2.csv')
-        df1.to_csv(os.getcwd() + '/Output/df1b.csv', index = False)
-        df2.to_csv(os.getcwd() + '/Output/df2b.csv', index = False)
-        
-
 if __name__ == '__main__':
     unittest.main()
-
-    #tambien puedes que no haya ningun nulo, assert para ver que todos los años sean ints, .....
