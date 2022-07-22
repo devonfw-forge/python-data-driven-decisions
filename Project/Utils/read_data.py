@@ -29,27 +29,12 @@ def read_data(read_path: str, warn = False):
 
     #The dict and list that will be returned.
     data_dict = {}
-    discarded_urls = []
     
     #Explore the directory, read csv and save the dataframes into the dictionary.
     #Write in a list the faulty urls.
     for element in listdir(read_path):
             url = join(read_path, element)
             if isfile(url) and url.endswith('.csv'):
-                if 'WID' in url:
-                    continue
-                try:
-                    dataframe = pd.read_csv(url)
-                except:
-                    discarded_urls.append(url)
-                else:
-                    data_dict[url] = dataframe
-
-    #If warn, raise a warning with all the urls that could not be read.
-    if warn and len(discarded_urls) > 0:
-            warn = 'Unable to read the following files:'
-            for url in discarded_urls:
-                warn += '\n' + url
-            warnings.warn(warn)
+                data_dict[url] = pd.read_csv(url, on_bad_lines = 'warn')
     
-    return data_dict, discarded_urls
+    return data_dict
