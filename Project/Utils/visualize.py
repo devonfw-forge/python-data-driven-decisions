@@ -5,7 +5,7 @@ import pandas as pd
 write_path = os.getcwd() + '/Output' #Path to the folder you want to store the dataframes
 
 
-def search(threshold, country):   
+def search(threshold, country, mode):   
 
     """ 
         For every country in the list generate a dataframe with the indicators and the GDP correlation. This correlation must be higher than the given thresold.
@@ -20,7 +20,15 @@ def search(threshold, country):
             DataFrame 
 
     """
-    df= pd.read_csv(write_path + '/Country/' + country + '.csv')
+    if mode == 'Country':
+        df= pd.read_csv(write_path + '/Country/' + country + '.csv')
+
+    elif mode == 'Region':
+        df= pd.read_csv(write_path + '/Region/' + country + '.csv')
+    
+    else:
+        df= pd.read_csv(write_path + '/?/' + country + '.csv')
+
     df.set_index(['Country', 'Year', 'Region'], inplace=True)
 
     df_result = pd.DataFrame()
@@ -50,28 +58,4 @@ def search(threshold, country):
 
 
 
-def pvalue(country):
 
-    """ 
-        For every indicator of a country generate the p-value and concatenate it into a dataframe.
-
-        PARAMETERS:
-            country:
-                Target country to generate the p-values of the indicators.
-        RETURNS:
-            DataFrame 
-
-    """
-    df= pd.read_csv(write_path + '/GoldDataframe.csv')
-    country_df = df.loc[df['Country'] == country]
-    country_df.set_index(['Country', 'Year', 'Region'], inplace=True)
-
-    column_pvalues = pd.DataFrame(columns=['Column', 'P-value'])
-
-    for column in country_df.columns:
-        if not country_df[column].isnull().values.any():
-            aux  = pd.DataFrame({'Column': [column],
-                                 'P-value': [stats.spearmanr(country_df[column], country_df['GDP'])[1]]})
-            column_pvalues = pd.concat([column_pvalues, aux], ignore_index=False, axis = 0)
-    column_pvalues.set_index(['Column'], inplace=True)
-    return column_pvalues
