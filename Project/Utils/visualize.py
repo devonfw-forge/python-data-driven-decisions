@@ -4,33 +4,6 @@ import pandas as pd
 
 write_path = os.getcwd() + '/Output' #Path to the folder you want to store the dataframes
 
-def search_indicators(threshold, corr_df):   
-
-    """ 
-        For every country in the list generate a dataframe with the indicators and the GDP correlation. This correlation must be higher than the given thresold.
-
-        PARAMETERS:
-            threshold: float
-                Threshold of the GDP correlation.
-            corr_df: pd.Dataframe()
-                Dataframe of the correlations for every country.
-                
-        RETURNS:
-            DataFrame 
-
-    """
-    countryList = corr_df.index.tolist() 
-    bestIndicators = {}
-    transp_corr = corr_df.transpose()
-
-    for country in countryList:
-        dataAux = pd.DataFrame()
-        dataAux = pd.concat([dataAux, transp_corr.loc[transp_corr[country] >= threshold, [country]]], ignore_index=False, axis=0)
-        dataAux = pd.concat([dataAux, transp_corr.loc[transp_corr[country] <= -threshold, [country]]], ignore_index=False, axis=0)
-        dataAux.rename(columns={ dataAux.columns[0]: "GDP Correlation" }, inplace = True)
-        bestIndicators[country] = dataAux.sort_values(by=["GDP Correlation"], ascending = False)
-    return bestIndicators
-
 
 def search(threshold, country):   
 
