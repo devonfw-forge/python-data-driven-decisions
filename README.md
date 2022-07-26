@@ -48,7 +48,7 @@ Therefore it is being utilized to get rid of all the outliers that may come from
 
 2- **Substitution of the NaN values**. The developed Nan values´ treatment has been a mix, between the linear interpolation and backwards filling. The linear interpolation is a form of interpolation, which involves the generation of new values based on an existing set of values. Linear interpolation is achieved by geometrically rendering a straight line between two adjacent points on a graph or plane. On the other side, the backwards filling will help us to arrive to those values which have not been fullfilled with the linear interpolation.
 
-3- **Escalation method**. The escalation process has been done dividing each value by the initial one of an indicator (value in 1990). Considering the start point as 1 (initial value divided by itself), each result will show the growth respect to the initial data.
+3- **Scaling method**. The escalation process has been done dividing each value by the initial one of an indicator (value in 1990). Considering the start point as 1 (initial value divided by itself), each result will show the growth respect to the initial data.
 
 # Run the application
 ## Dependencies
