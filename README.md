@@ -50,7 +50,10 @@ Therefore it is being utilized to get rid of all the outliers that may come from
 
 3- **Scaling method**. The escalation process has been done dividing each value by the initial one of an indicator (value in 1990). Considering the start point as 1 (initial value divided by itself), each result will show the growth respect to the initial data.
 
-4- **Removing indicators**. Those indicators which have 20% of missing values of its total have been removed because a lack of data shows unreliable results.
+4- **Removing indicators**. 
+- Those indicators which have 20% of missing values of its total have been removed because a lack of data shows unreliable results.
+- There are some indicators which represent exactly the same through different units, so, we are going to select only one type. For example, in moetary cases, indicators which are expressed with current US $ has been selected. Then, which are showed with thepercentage and the total value, we have programmed to selct which ones which show a greater value.
+
 
 # Run the application
 ## Dependencies
