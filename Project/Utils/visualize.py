@@ -33,3 +33,33 @@ def pvalue(country):
                                                     ignore_index=True) 
     column_pvalues.set_index(['Column'], inplace=True)
     return column_pvalues
+
+def sig_df(df: pd.DataFrame, index: str = 'Country'):
+    corr_df = pd.DataFrame()
+    corr_df.index.names = [index]
+    aux_df = pd.DataFrame()
+
+    #List all the countries, none repeated
+    countries = set(df[index].to_list())
+
+    country_dict = {}
+    corr_dict = {}
+
+    for country in countries:
+
+        #Get the DataFrame for a given country
+        country_df = df.loc[df[index] == country]
+
+        #Correlation matrix for that country
+        country_corr_df = country_df.corr()
+
+        #Trim it into a single row
+        country_corr_df = country_corr_df.rename(columns = {'GDP': country}).drop(index = ['Year', 'GDP'])
+
+        #Add the row to a new DataFrame with the correlations for each country
+        corr_df = pd.concat([corr_df, country_corr_df[country]], axis = 1)
+
+    #Transpose the resulting DataFrame to have the desired format and show it
+    corr_df = corr_df.transpose()
+    corr_df
+
