@@ -4,62 +4,119 @@ import pandas as pd
 
 write_path = os.getcwd() + '/Output' #Path to the folder you want to store the dataframes
 
-def search_indicators(threshold, corr_df):   
-    countryList = corr_df.index.tolist() 
-    bestIndicators = {}
-    transp_corr = corr_df.transpose()
 
-    for country in countryList:
-        dataAux = pd.DataFrame()
-        dataAux = pd.concat([dataAux, transp_corr.loc[transp_corr[country] >= threshold, [country]]], ignore_index=False, axis=0)
-        dataAux = pd.concat([dataAux, transp_corr.loc[transp_corr[country] <= -threshold, [country]]], ignore_index=False, axis=0)
-        dataAux.rename(columns={ dataAux.columns[0]: "GDP Correlation" }, inplace = True)
-        bestIndicators[country] = dataAux.sort_values(by=["GDP Correlation"], ascending = False)
-    return bestIndicators
+""" def search(threshold, country = 'Afganisthan', mode):   
+
+    
+        For every country in the list generate a dataframe with the indicators and the GDP correlation. This correlation must be higher than the given thresold.
+
+        PARAMETERS:
+            threshold: float
+                Threshold of the GDP correlation.
+            corr_df: pd.Dataframe()
+                Dataframe of the correlations for every country.
+                
+        RETURNS:
+            DataFrame 
+
+    
+    if mode == 'Country':
+        df= pd.read_csv(write_path + '/Country/' + country + '.csv')
+        df.set_index(['Country', 'Year', 'Region'], inplace=True)
+
+    elif mode == 'Region':
+        df= pd.read_csv(write_path + '/AggregatedRegion_DataFrame.csv')
+        df.set_index(['Region', 'Year'], inplace=True)
+    
+    else:
+        df= pd.read_csv(write_path + '/AggregatedWorld_DataFrame.csv')
+        df.set_index(['Region', 'Year'], inplace=True)
 
 
 
-def pvalue(country):
-    df= pd.read_csv(write_path + '/GoldDataframe.csv')
-    country_df = df.loc[df['Country'] == country]
-    country_df.set_index(['Country', 'Year', 'Region'], inplace=True)
+    df_result = pd.DataFrame()
+    for column in df.columns:
+        if column != 'GDP' and not df[column].isnull().values.any():
+            pears = stats.pearsonr(df[column], df['GDP'])
+            spear = stats.spearmanr(df[column], df['GDP'])
+            
+            if (pears[0] >= threshold and spear[0] >= threshold) or (pears[0] <= -threshold and spear[0] <= -threshold) :
+                aux  = pd.DataFrame({'Indicator': [column],
+                                    'GDP Pearson Corr': [pears[0]],
+                                    'P-value Pearson': [pears[1]],
+                                    'GDP Spearman Corr': [spear[0]],
+                                    'P-value Spearman': [spear[1]]})
 
-    column_pvalues = pd.DataFrame(columns=['Column', 'P-value'])
+                df_result = pd.concat([df_result, aux], ignore_index=False, axis = 0)
 
-    for column in country_df.columns:
-        if not country_df[column].isnull().values.any():
-            column_pvalues= column_pvalues.append({'Column': column,
-                                                    'P-value': stats.pearsonr(country_df[column], country_df['GDP'])[1]},
-                                                    ignore_index=True) 
-    column_pvalues.set_index(['Column'], inplace=True)
-    return column_pvalues
 
-def sig_df(df: pd.DataFrame, index: str = 'Country'):
-    corr_df = pd.DataFrame()
-    corr_df.index.names = [index]
-    aux_df = pd.DataFrame()
+   
+    df_result.set_index(['Indicator'], inplace=True)
 
-    #List all the countries, none repeated
-    countries = set(df[index].to_list())
+    df_result = df_result.sort_values(by=["GDP Pearson Corr"], ascending = False)
 
-    country_dict = {}
-    corr_dict = {}
+    return df_result"""
 
-    for country in countries:
 
-        #Get the DataFrame for a given country
-        country_df = df.loc[df[index] == country]
+def search(threshold, mode = 'Region', zone = 'Afganisthan'):   
 
-        #Correlation matrix for that country
-        country_corr_df = country_df.corr()
+    """ 
+        For every country in the list generate a dataframe with the indicators and the GDP correlation. This correlation must be higher than the given thresold.
 
-        #Trim it into a single row
-        country_corr_df = country_corr_df.rename(columns = {'GDP': country}).drop(index = ['Year', 'GDP'])
+        PARAMETERS:
+            threshold: float
+                Threshold of the GDP correlation.
+            corr_df: pd.Dataframe()
+                Dataframe of the correlations for every country.
+                
+        RETURNS:
+            DataFrame 
 
-        #Add the row to a new DataFrame with the correlations for each country
-        corr_df = pd.concat([corr_df, country_corr_df[country]], axis = 1)
+    """
+    if mode == 'Country':
+        df= pd.read_csv(write_path + '/GoldDataframe.csv')
+        df = df.loc[df['Country'] == zone]
+        df.set_index(['Country', 'Year', 'Region'], inplace=True)
+        
 
-    #Transpose the resulting DataFrame to have the desired format and show it
-    corr_df = corr_df.transpose()
-    corr_df
+    elif mode == 'Region':
+        df= pd.read_csv(write_path + '/AggregatedRegion_DataFrame.csv')
+        df = df.loc[df['Region'] == zone]
+        df.set_index(['Region', 'Year'], inplace=True)
+        
+    
+    else:
+        df= pd.read_csv(write_path + '/AggregatedWorld_DataFrame.csv')
+        df.set_index(['Region', 'Year'], inplace=True)
+        #df.set_index(['Country', 'Year', 'Region'], inplace=True)
+
+
+
+    df_result = pd.DataFrame()
+    for column in df.columns:
+        if column != 'GDP' and not df[column].isnull().values.any():
+            pears = stats.pearsonr(df[column], df['GDP'])
+            spear = stats.spearmanr(df[column], df['GDP'])
+            
+            if (pears[0] >= threshold and spear[0] >= threshold) or (pears[0] <= -threshold and spear[0] <= -threshold) :
+                aux  = pd.DataFrame({'Indicator': [column],
+                                    'GDP Pearson Corr': [pears[0]],
+                                    'P-value Pearson': [pears[1]],
+                                    'GDP Spearman Corr': [spear[0]],
+                                    'P-value Spearman': [spear[1]]})
+
+                df_result = pd.concat([df_result, aux], ignore_index=False, axis = 0)
+
+
+   
+    df_result.set_index(['Indicator'], inplace=True)
+
+    df_result = df_result.sort_values(by=["GDP Pearson Corr"], ascending = False)
+
+    return df_result
+
+   
+
+
+
 
