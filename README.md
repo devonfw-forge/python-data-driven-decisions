@@ -48,6 +48,10 @@ Therefore it is being utilized to get rid of all the outliers that may come from
 
 2- **Substitution of the NaN values**. The developed Nan values´ treatment has been a mix, between the linear interpolation and backwards filling. The linear interpolation is a form of interpolation, which involves the generation of new values based on an existing set of values. Linear interpolation is achieved by geometrically rendering a straight line between two adjacent points on a graph or plane. On the other side, the backwards filling will help us to arrive to those values which have not been fullfilled with the linear interpolation.
 
+3- **Scaling method**. The escalation process has been done dividing each value by the initial one of an indicator (value in 1990). Considering the start point as 1 (initial value divided by itself), each result will show the growth respect to the initial data.
+
+4- **Removing indicators**. Those indicators which have 20% of missing values of its total have been removed because a lack of data shows unreliable results.
+
 # Run the application
 ## Dependencies
 Dependecies are automatically managed by Poetry and there is NO need to use external dockers for running spark.
@@ -86,11 +90,8 @@ To start the execution of our code, you can directly run the notebooks on Visual
 - The Net Migration indicator measures the difference between the number of immigrants and emigrants, so the number of people entering the country minus the number of people leaving it. As the difference is measured, it is necessary to see the original data to draw the conclusions correctly. Taking into account whether this net value is positive or negative and extract conclusions according the type of correlation. 
 
 - Something similar occurs with the indicator Direct Foreign Investment. This one shows us the    difference between outflows and inflows, so, if countries invest outside more or less than which is invested in them. Again we should see which are the net values to extract conclusions 	correctly. 
-
-- After treating the data, we realized that the indicators: Mortality Pollution and Gender Equality do not present sufficient data for analysis. Therefore, they have been eliminated. No conclusions will be drawn between this indicator and the countries. 
  
 
- 
 ## Repository setup
 The code is divided in several notebooks that need to be excuted following the corresponding order, which coincides with the one described above in the main steps section.
 
