@@ -1,8 +1,8 @@
 # Execute the project
 
-1) Download databases.zip and Project, and place them in the same folder
+1) Download [databases.zip](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-sharks/Databases.zip) and [Project](https://github.com/devonfw-forge/python-data-driven-decisions/tree/main-data-sharks/Project), and place them in the same folder
 2) Extract the databases
-3) Execute the notebooks in the following order: Notebook_Bronze, Notebook_Silver and Notebook_Gold. This will create a series of output DataFrames as .csv files.
+3) Execute the notebooks in the following order: [Notebook_Bronze](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-sharks/Notebook_Bronze.ipynb), [Notebook_Silver](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-sharks/Notebook_Silver.ipynb) and [Notebook_Gold](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-sharks/Notebook_Golden.ipynb). This will create a series of output DataFrames as .csv files.
 4) Execute any other notebook if desired.
 
 
