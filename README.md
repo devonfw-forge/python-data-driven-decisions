@@ -82,6 +82,15 @@ After the long process of preparing the data, we started to analyse the correlat
 
 [WIP]
 
+
+## Testing
+
+The code is being tested along the development of the project. This are the results of the last coverage:
+
+![image](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-sharks/image.png)
+
+
+
 # Run the application
 ## Poetry
 All dependencies are controled by Poetry by simply executing the command "poetry install" in the same folder.
