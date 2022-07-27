@@ -66,8 +66,10 @@ def search(threshold, mode = 'Region', zone = 'Afganisthan'):
         PARAMETERS:
             threshold: float
                 Threshold of the GDP correlation.
-            corr_df: pd.Dataframe()
-                Dataframe of the correlations for every country.
+            mode: str ['Country', 'Region, 'World']
+                What dataframe to process.
+            zone: str
+                The zone to process.
                 
         RETURNS:
             DataFrame 

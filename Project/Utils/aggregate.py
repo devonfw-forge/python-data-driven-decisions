@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pandas as pd
 
@@ -70,6 +71,8 @@ def aggregate(df: pd.DataFrame, aggregate_by: str, for_index: str, weight: str =
                 for member in member_list:
                     c_ind = df.loc[(df.index.get_level_values(group_col_name) == member) & (df.index.get_level_values(entry_col_name) == entry)].iloc[0][indicator]
                     c_pop = df.loc[(df.index.get_level_values(group_col_name) == member) & (df.index.get_level_values(entry_col_name) == entry)].iloc[0][weight]
+                    
+
                     #Ignore if any is None or NaN
                     if c_ind is None or c_pop is None or np.isnan(c_ind) or np.isnan(c_pop):
                         continue
@@ -79,6 +82,8 @@ def aggregate(df: pd.DataFrame, aggregate_by: str, for_index: str, weight: str =
                 #If no data available, write a None to avoid dividing by 0
                 if t_pop == 0 or sum == 0:
                     mean_value = None
+                
+
                 else:
                     mean_value = sum / t_pop
                 #Fill the dictionary with the values calculated
