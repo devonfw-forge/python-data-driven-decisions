@@ -23,6 +23,8 @@ def search(threshold, mode = 'Region', zone = 'Afganisthan'):
             DataFrame 
 
     """
+
+
     if mode == 'Country':
         df= pd.read_csv(write_path + '/GoldDataframe.csv')
         df = df.loc[df['Country'] == zone]
@@ -42,7 +44,7 @@ def search(threshold, mode = 'Region', zone = 'Afganisthan'):
 
 
 
-    df_result = pd.DataFrame()
+    df_result = pd.DataFrame(columns=['Indicator','GDP Pearson Corr'])
     for column in df.columns:
         if column != 'GDP' and not df[column].isnull().values.any():
             pears = stats.pearsonr(df[column], df['GDP'])
