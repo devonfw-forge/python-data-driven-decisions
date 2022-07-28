@@ -18,9 +18,44 @@ In order to check the veracity of this hypothesis the following steps are going 
 
 In order to study the correlation between the economic indicators and some socio-demographic indicators, we have to select both the indicators to be studied and how we are going to measure the economic growth. While the first issue will be resolved by a number of iterations in which we will remove the less significative indicators and try to add different ones, the second was decided to be masured with the GDP of the country.
 
+The indicators we will use are:
+
+- [Gender Equality](https://data.worldbank.org/indicator/IQ.CPA.GNDR.XQ): CPIA Ranking on Gender Equality, from 1 to 6. The higher, the better. CPIA is short for Country Policy and Institutional Assessment.
+- [% Undernourishment](https://data.worldbank.org/indicator/SN.ITK.DEFC.ZS): % of the population whose habitual food consumption is insufficient to provide the dietary energy levels that are required to maintain a normal active and healthy life. A value of 10 means 10%.
+- [Credit to Agri-Fish-Forest](https://www.fao.org/faostat/en/#data/IC/metadata): amount of loans provided by the private/commercial banking sector to producers in agriculture, forestry and fishing, including household producers, cooperatives, and agro-businesses.
+- [Agriculture Share of GDP](https://www.fao.org/faostat/en/#data/MK): % of the GDP that comes from agricultural activity.
+- [Rural Employment](https://www.fao.org/faostat/en/#data/OER): total number of the population that work in rural areas, in 1000 people.
+- [Gross Domestic Product](https://www.fao.org/faostat/en/#data/MK): total value of the production of a country in million US$.
+- [Employment in Agri-Fish-Forest](https://www.fao.org/faostat/en/#data/OER): % of the employed population that works in the primary sector.
+- [Total Agriculture](https://www.fao.org/faostat/en/#data/MK): total value of the agricultural value of a country in thousand US$.
+- [Gender Inequality](https://www.kaggle.com/datasets/jorgegarciainiguez/genderinequalityindex): how steep is the inequality between men and women, measured from 0 (none) to 1 (maximum).
+- [% Soldiers](https://ourworldindata.org/grapher/armed-forces-personnel): % of the workforce employed by the armed forces of the country.
+- [Marriage Rate](https://ourworldindata.org/marriages-and-divorces): Number of marriages in each year per 1,000 people in the population.
+- [Birth Rate](https://data.worldbank.org/indicator/SP.DYN.CBRT.IN): Number of births per 1000 people.
+- [Death Rate](https://data.worldbank.org/indicator/SP.DYN.CDRT.IN): Number of deaths per 1000 people.
+- [Homicides](https://data.worldbank.org/indicator/VC.IHR.PSRC.P5): Number of intentional homicides per 100,000 people.
+- [Life Expectancy](https://data.worldbank.org/indicator/SP.DYN.LE00.IN): Number of years a newborn infant would live if prevailing patterns of mortality at the time of its birth were to stay the same throughout its life.
+- [Maternal Death Risk](https://data.worldbank.org/indicator/SH.MMR.RISK.ZS): Probability that a 15-year-old female will die eventually from a maternal cause assuming that current levels of fertility and mortality (including maternal mortality) do not change in the future.
+- [Literacy Rate](https://data.worldbank.org/indicator/SE.ADT.LITR.ZS): Percentage of people ages 15 and above who can both read and write with understanding a short simple statement about their everyday life.
+- [Infant Mortality](https://data.worldbank.org/indicator/SP.DYN.IMRT.IN): Number of infant deaths per 1000 live births.
+- [% Population Growth](https://data.worldbank.org/indicator/SP.POP.GROW): Annual population growth rate for year t is the exponential rate of growth of midyear population from year t-1 to t, expressed as a percentage . Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship.
+- [% Rural Population](https://data.worldbank.org/indicator/SP.RUR.TOTL.ZS): % of people living in rural areas as defined by national statistical offices. It is calculated as the difference between total population and urban population.
+- [Suicide Rate](https://data.worldbank.org/indicator/SH.STA.SUIC.P5): Number of suicide deaths in a year per 100,000 population. Crude suicide rate (not age-adjusted).
+- [Gini](http://data.un.org/Data.aspx?d=WDI&f=Indicator_Code%3ASI.POV.GINI): Gini index measures the extent to which the distribution of income (or, in some cases, consumption expenditure) among individuals or households within an economy deviates from a perfectly equal distribution. A Lorenz curve plots the cumulative percentages of total income received against the cumulative number of recipients, starting with the poorest individual or household. The Gini index measures the area between the Lorenz curve and a hypothetical line of absolute equality, expressed as a percentage of the maximum area under the line. Thus a Gini index of 0 represents perfect equality, while an index of 100 implies perfect inequality.
+- [Civil Liberties](https://ourworldindata.org/grapher/civil-liberties-eiu?country=SLE~LTU~LBY~LBR~LVA~LSO~LBN~LAO~LKA~LUX): Index that ranges from 0 (no liberties) to 10 (most liberties). It is based on the expert assessments and index by the Economist Intelligence Unit (2022).
+- [% Men Employment](https://ourworldindata.org/female-labor-supply): Proportion of the male population ages 15 and over that is economically active. Data is available for OECD member countries, as well as for non-member countries publishing statistics in OECD.stats.
+- [% Women Employment](https://ourworldindata.org/female-labor-supply): Proportion of the female population ages 15 and over that is economically active. Data is available for OECD member countries, as well as for non-member countries publishing statistics in OECD.stats.
+- [Population](https://ourworldindata.org/grapher/population-past-future?country=CHN~IND~USA~NGA~BRA~JPN~IDN): Historical estimates of population, combined with the projected population to 2100 based on the UN's medium variant scenario.
+- [Freedom of Expression](https://ourworldindata.org/grapher/freedom-of-expression-bti?country=ARG~BWA~CHN~CZE): Index that indicates the extent to which individuals, groups, and the press can express their views free from government interference. Ranges from 0 (no freedom) to 10 (most fredom). It is based on the expert assessments and scoring by the Bertelsmann Transformation Index (2022).
+- [% Health Expenditure](https://ourworldindata.org/grapher/public-health-expenditure-share-GDP-OWID): This metric captures spending on government funded health care systems and social health insurance, as well as compulsory health insurance.
+- [% Industry Employment](https://ourworldindata.org/grapher/industry-share-of-total-emplyoment?country=~COD): Employment refers to all persons of working age who, during a specified brief period, were in paid employment (whether at work or with a job but not at work) or in self-employment (whether at work or with an enterprise but not at work).
+- [Women Schooling Years](https://ourworldindata.org/grapher/mean-years-of-schooling-female): Average number of years women older than 25 participated in formal education.
+- [Men Schooling Years](https://ourworldindata.org/grapher/mean-years-of-schooling-male): Average number of years men older than 25 participated in formal education.
+- [% Education Expenditure](https://ourworldindata.org/grapher/share-of-education-in-government-expenditure): Total general government expenditure on education, expressed as a percentage of total general government expenditure on all sectors.
+
 ## 2) Select source of information
 
-This process included both deciding where from and how. The how was decided to be .csv as it is a common and simple standard, while the origin of the data was chose to be a number of wide range databases such as those from the World Bank, UN or the FAO, but also some more niche ones like OurWorldInData or some example DataFrames from Kaggle.
+This process included both deciding where from and how. The how was decided to be .csv as it is a common and simple standard, while the origin of the data was chose to be a number of wide range databases such as those from the World Bank, UN, OurWorldInData or the FAO, but also some more niche ones like some example DataFrames from Kaggle.
 
 ## 3) Definition of Normalized Data Model
 
@@ -41,8 +76,6 @@ Same process as step 3, the multi-index would be respected, and all the columns 
 ## 6) Integration
 
 The integration process merely consisted on using the merge function for Pandas Dataframes until all our data had been integrated into the new database, which would later be exported as a .csv.
-
-![image](https://github.com/devonfw-forge/python-data-driven-decisions/blob/aaa43f45b6e6f46b5596aefec8942fa4f2131aad/model-definition-diagram%20(1).png)
 
 ## 7) Establishing the range
 
@@ -72,7 +105,7 @@ From the condensated Dataframe, we created other smaller Dataframes divided by r
 
 We thought it could be interesting to have entries for the aggregates of each region, so we wrote a method that would calculate it. For absolute values, it would provide the summatory of all the elements, while for relative ones, we calculated the weighted average based on the population of the countries.
 
-This aggregation also allowed us to estimate a number of entries for the whole world.
+However, this method of aggregation resulted in very sharp correlation, both positive and negatives, very likely due to the direct correlation between the GDP and the weight used, the population. Thus, we also used a median of the correlations to show a represantative value of the correlations between GDP and indicators for each region.
 
 ## 12) Analysing the data
 
