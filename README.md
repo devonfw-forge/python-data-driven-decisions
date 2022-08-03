@@ -52,7 +52,7 @@ Therefore it is being utilized to get rid of all the outliers that may come from
 
 4- **Removing indicators**. 
 - Those indicators which have 20% of missing values of its total have been removed because a lack of data shows unreliable results.
-- There are some indicators which represent exactly the same through different units, so, we are going to select only one type. For example, in moetary cases, indicators which are expressed with current US $ has been selected. Then, which are showed with thepercentage and the total value, we have programmed to selct which ones which show a greater value.
+- There are some indicators which represent exactly the same through different units, so, we are going to select only one type. For example, in monetary cases, indicators which are expressed with current US $ has been selected. Then, which are showed with the percentage and the total value, we have programmed to selct which ones which show a greater value.
 
 
 # Run the application
