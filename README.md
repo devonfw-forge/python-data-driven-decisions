@@ -78,10 +78,18 @@ Poetry will take care of:
 - From `scipy` import `stats` and `shapiro`. Scipy provides algorithms for optimization, integration, interpolation, eigenvalue problems, algebraic equations, differential equations, statistics and many other classes of problems. Extends NumPy providing additional tools for array computing and provides specialized data structures, such as sparse matrices and k-dimensional trees. Mainly used for statistical calculations.
 
 - The `plotly.express`  module (usually imported as px) contains functions that can create entire figures at once, and is referred to as Plotly Express or PX. Plotly Express is a built-in part of the plotly library, and is the recommended starting point for creating most common figures. Every Plotly Express function uses graph objects internally and returns a plotly.graph_objects.Figure instance. Throughout the plotly documentation, you will find the Plotly Express way of building figures at the top of any applicable page, followed by a section on how to use graph objects to build similar figures. Therefore it will allow for interacting graphs.
+
 - `seaborn` is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics. Used for the correlations matrix. 
 
 - The `requests` library is the de facto standard for making HTTP requests in Python. It abstracts the complexities of making requests behind a beautiful, simple API so that you can focus on interacting with services and consuming data in your application. It allows for downloading data from the websites.
 
+- The `functools` is a module for higher-order functions: functions that act on or return other functions.
+
+- The `ipywidgets` allows us having interactive widgets (sliders, buttons, dropdowns...) with which we can control and customize the display of our data.
+
+- `warnings` to avoid warning messages when showing the notebook.
+
+- `dash` and `itables`: both libraries can be used for making interactive tables designed for viewing, editing, and exploring large datasets in Python. At the begginning, we started with `dash` (which is a scratch in React.js) but as it is rendered with semantic HTML, we looked for an alternative that visualizes inside our notebook, so we found `itables`, which have a similar functionality.
 
 ## Running on local
 To start the execution of our code, you can directly run the notebooks on Visual Studio Code opening the files .ipynb, or with the command `poetry run jupyter notebook`.
