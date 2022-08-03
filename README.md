@@ -83,13 +83,13 @@ Poetry will take care of:
 
 - The `requests` library is the de facto standard for making HTTP requests in Python. It abstracts the complexities of making requests behind a beautiful, simple API so that you can focus on interacting with services and consuming data in your application. It allows for downloading data from the websites.
 
-- The `functools` for higher-order functions: functions that act on or return other functions.
+- The `functools` is a module for higher-order functions: functions that act on or return other functions.
 
-- The `ipywidgets` for having interactive widgets (sliders, buttons, dropdowns...) with which we can customize and easen the display of our data.
+- The `ipywidgets` allows us having interactive widgets (sliders, buttons, dropdowns...) with which we can control and customize the display of our data.
 
 - `warnings` to avoid warning messages when showing the notebook.
 
-- `dash` and `itables`: both libraries can be used for making interactive tables designed for viewing, editing, and exploring large datasets in Python. At the begginning, we started with `dash` (which is a scratch in React.js) but as it is rendered with semantic HTML, we looked for an alternative that visualizes inside our notebook, so we found Itables, which have a similar functionality.
+- `dash` and `itables`: both libraries can be used for making interactive tables designed for viewing, editing, and exploring large datasets in Python. At the begginning, we started with `dash` (which is a scratch in React.js) but as it is rendered with semantic HTML, we looked for an alternative that visualizes inside our notebook, so we found `itables`, which have a similar functionality.
 
 ## Running on local
 To start the execution of our code, you can directly run the notebooks on Visual Studio Code opening the files .ipynb, or with the command `poetry run jupyter notebook`.
