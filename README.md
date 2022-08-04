@@ -48,6 +48,13 @@ Therefore it is being utilized to get rid of all the outliers that may come from
 
 2- **Substitution of the NaN values**. The developed Nan values´ treatment has been a mix, between the linear interpolation and backwards filling. The linear interpolation is a form of interpolation, which involves the generation of new values based on an existing set of values. Linear interpolation is achieved by geometrically rendering a straight line between two adjacent points on a graph or plane. On the other side, the backwards filling will help us to arrive to those values which have not been fullfilled with the linear interpolation.
 
+3- **Scaling method**. The escalation process has been done dividing each value by the initial one of an indicator (value in 1990). Considering the start point as 1 (initial value divided by itself), each result will show the growth respect to the initial data.
+
+4- **Removing indicators**. 
+- Those indicators which have 20% of missing values of its total have been removed because a lack of data shows unreliable results.
+- There are some indicators which represent exactly the same through different units, so, we are going to select only one type. For example, in monetary cases, indicators which are expressed with current US $ has been selected. Then, which are showed with the percentage and the total value, we have programmed to selct which ones which show a greater value.
+
+
 # Run the application
 ## Dependencies
 Dependecies are automatically managed by Poetry and there is NO need to use external dockers for running spark.
@@ -71,10 +78,18 @@ Poetry will take care of:
 - `scipy`, provides algorithms for optimization, integration, interpolation, eigenvalue problems, algebraic equations, differential equations, statistics and many other classes of problems. Extends NumPy providing additional tools for array computing and provides specialized data structures, such as sparse matrices and k-dimensional trees. Mainly used for statistical calculations.
 
 - The `plotly.express`  module (usually imported as px) contains functions that can create entire figures at once, and is referred to as Plotly Express or PX. Plotly Express is a built-in part of the plotly library, and is the recommended starting point for creating most common figures. Every Plotly Express function uses graph objects internally and returns a plotly.graph_objects.Figure instance. Throughout the plotly documentation, you will find the Plotly Express way of building figures at the top of any applicable page, followed by a section on how to use graph objects to build similar figures. Therefore it will allow for interacting graphs.
+
 - `seaborn` is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics. Used for the correlations matrix. 
 
 - The `requests` library is the de facto standard for making HTTP requests in Python. It abstracts the complexities of making requests behind a beautiful, simple API so that you can focus on interacting with services and consuming data in your application. It allows for downloading data from the websites.
 
+- The `functools` is a module for higher-order functions: functions that act on or return other functions.
+
+- The `ipywidgets` allows us having interactive widgets (sliders, buttons, dropdowns...) with which we can control and customize the display of our data.
+
+- `warnings` to avoid warning messages when showing the notebook.
+
+- `dash` and `itables`: both libraries can be used for making interactive tables designed for viewing, editing, and exploring large datasets in Python. At the begginning, we started with `dash` (which is a scratch in React.js) but as it is rendered with semantic HTML, we looked for an alternative that visualizes inside our notebook, so we found `itables`, which have a similar functionality.
 
 ## Running on local
 To start the execution of our code, you can directly run the notebooks on Visual Studio Code opening the files .ipynb, or with the command `poetry run jupyter notebook`.
@@ -86,11 +101,8 @@ To start the execution of our code, you can directly run the notebooks on Visual
 - The Net Migration indicator measures the difference between the number of immigrants and emigrants, so the number of people entering the country minus the number of people leaving it. As the difference is measured, it is necessary to see the original data to draw the conclusions correctly. Taking into account whether this net value is positive or negative and extract conclusions according the type of correlation. 
 
 - Something similar occurs with the indicator Direct Foreign Investment. This one shows us the    difference between outflows and inflows, so, if countries invest outside more or less than which is invested in them. Again we should see which are the net values to extract conclusions 	correctly. 
-
-- After treating the data, we realized that the indicators: Mortality Pollution and Gender Equality do not present sufficient data for analysis. Therefore, they have been eliminated. No conclusions will be drawn between this indicator and the countries. 
  
 
- 
 ## Repository setup
 The code is divided in several notebooks that need to be excuted following the corresponding order, which coincides with the one described above in the main steps section.
 
