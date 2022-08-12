@@ -39,6 +39,19 @@ indicators = {
     'Population growth (annual %)': '% Population Growth',
     'Rural population (% of total population)': '% Rural Population',
     'Suicide mortality rate (per 100,000 population)': 'Suicide Rate',
+    'School enrollment, tertiary (gross), gender parity index (GPI)': 'Tertiary School Gender Parity',
+    'Research and development expenditure (% of GDP)': ' R&D expenditure %GDP',
+    'Researchers in R&D (per million people)': 'Researchers in R&D',
+    'Employment in agriculture (% of total employment) (modeled ILO estimate)' : 'Employment in agriculture',
+    'Employment in industry (% of total employment) (modeled ILO estimate)': 'Employment in industry',
+    'Employment in services (% of total employment) (modeled ILO estimate)': 'Employment in services',
+    'Cost of business start-up procedures (% of GNI per capita)': 'Cost business start-up',
+    'Employment to population ratio, 15+, female (%) (modeled ILO estimate)':  ' % Female Employment',
+    'Employment to population ratio, 15+, male (%) (modeled ILO estimate)':  ' % Male Employment',
+    'Vulnerable employment, male (% of male employment) (modeled ILO estimate)': '% Vulnerable male employment',
+    'Vulnerable employment, female (% of female employment) (modeled ILO estimate)' : '% Vulnerable female employment',
+    'Government expenditure on education, total (% of GDP)': '% Education Expenditure',
+
     
     #UN_Data
     'Value': 'Gini',
@@ -48,15 +61,14 @@ indicators = {
     
     #WorldInData
     'civlib_vdem_owid': 'Civil Liberties',
-    'Employment-to-population ratio, men (%)': '% Men Employment',
-    'Employment-to-population ratio, women (%)': '% Women Employment',
     'Population (historical estimates)': 'Population',
     'freeexpr_vdem_owid': 'Freedom of Expression',
     'Indicator:Domestic general government health expenditure (GGHE-D) as percentage of general government expenditure (GGE) (%)': '% Healthcare Investment',
     'Industry as % of total employment -- ILO modelled estimates, May 2017': '% Employment Industry',
     'UIS: Mean years of schooling of the population age 25+. Female': 'Women Schooling Years',
     'UIS: Mean years of schooling of the population age 25+. Male': 'Men Schooling Years',
-    'Government expenditure on education, total (% of government expenditure)': '% Education Expenditure'
+    
+
 
 }
 
