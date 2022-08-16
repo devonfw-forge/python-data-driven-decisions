@@ -50,7 +50,8 @@ def search(threshold, mode = 'Region', zone = 'Afganisthan'):
             pears = stats.pearsonr(df[column], df['GDP'])
             spear = stats.spearmanr(df[column], df['GDP'])
             
-            if (pears[0] >= threshold and spear[0] >= threshold) or (pears[0] <= -threshold and spear[0] <= -threshold) :
+
+            if (threshold == 0) or (pears[0] >= threshold and spear[0] >= threshold) or (pears[0] <= -threshold and spear[0] <= -threshold) :
                 aux  = pd.DataFrame({'Indicator': [column],
                                     'GDP Pearson Corr': [pears[0]],
                                     'P-value Pearson': [pears[1]],
