@@ -68,7 +68,7 @@ def search(threshold, mode = 'Region', zone = 'Afganisthan'):
 
     return df_result
 
-def searchTimeSeries(threshold, start, end, mode = 'Region', zone = 'Afganisthan'):   
+def searchTimeSeries(threshold, start, end, time, mode = 'Region', zone = 'Afganisthan'):   
 
     """ 
         For every country in the list generate a dataframe with the indicators and the GDP correlation. This correlation must be higher than the given thresold.
@@ -93,23 +93,12 @@ def searchTimeSeries(threshold, start, end, mode = 'Region', zone = 'Afganisthan
         df.set_index(['Country', 'Year', 'Region'], inplace=True)
         
 
-    elif mode == 'Region':
-        df= pd.read_csv(write_path + '/AggregatedRegion_DataFrame.csv')
-        df = df.loc[df['Region'] == zone]
-        df.set_index(['Region', 'Year'], inplace=True)
-        
-    
-    else:
-        df= pd.read_csv(write_path + '/AggregatedWorld_DataFrame.csv')
-        df.set_index(['Region', 'Year'], inplace=True)
-        #df.set_index(['Country', 'Year', 'Region'], inplace=True)
+    #Trim the dataframe to the desired range for the window series.
+    if time: df = df.loc[df.index.get_level_values('Year').isin(range(start, end + 1))]
 
-
-    df = df.loc[df.index.get_level_values('Year') == range(start, end)]
-    df_result = pd.DataFrame(columns=['Indicator','GDP Pearson Corr'])
+    df_result = pd.DataFrame(columns=['Indicator','GDP Spearman Corr'])
     for column in df.columns:
         if column != 'GDP' and not df[column].isnull().values.any():
-            pears = stats.pearsonr(df[column], df['GDP'])
             spear = stats.spearmanr(df[column], df['GDP'])
             
 
@@ -124,7 +113,12 @@ def searchTimeSeries(threshold, start, end, mode = 'Region', zone = 'Afganisthan
 
     df_result.set_index(['Indicator'], inplace=True)
 
-    df_result = df_result.sort_values(by=["GDP Pearson Corr"], ascending = False)
+    df_result = df_result.sort_values(by=['GDP Spearman Corr'], ascending = False)
+
+    
+    #Filter perfect correlation due to low data.
+    #df_result.drop(df_result[df_result['P-value Spearman'] == 1].index, inplace=True )
+    #df_result.drop(df_result[df_result['P-value Spearman'] == -1].index, inplace=True )
 
     return df_result
 
