@@ -68,7 +68,7 @@ def search(threshold, mode = 'Region', zone = 'Afganisthan'):
 
     return df_result
 
-def searchTimeSeries(threshold, start, end, time, df, mode = 'Region', zone = 'Afganisthan'):   
+def searchTimeSeries(threshold, start, end, time, df, zone):   
 
     """ 
         For every country in the list generate a dataframe with the indicators and the GDP correlation. This correlation must be higher than the given thresold.
@@ -86,33 +86,14 @@ def searchTimeSeries(threshold, start, end, time, df, mode = 'Region', zone = 'A
 
     """
 
-
-    if mode == 'Country':
-        df= pd.read_csv(write_path + '/GoldDataframe.csv')
-        df = df.loc[df['Country'] == zone]
-        df.set_index(['Country', 'Year', 'Region'], inplace=True)
-    
-    """ if mode == 'Region':
-        df= pd.read_csv(write_path + '/GoldDataframe.csv')
-        df = df.loc[df['Region'] == zone]
-        df.set_index(['Country', 'Year', 'Region'], inplace=True)
-
-        df = norm(df)
-        df.sort(key = ['Year', 'Country']) """
-
-        
-
     #Trim the dataframe to the desired range for the window series.
     if time: df = df.loc[df.index.get_level_values('Year').isin(range(start, end + 1))]
-
-    
 
 
     df_result = pd.DataFrame(columns=['Indicator','GDP Spearman Corr'])
     for column in df.columns:
         if column != 'GDP' and not df[column].isnull().values.any():
             spear = stats.spearmanr(df[column], df['GDP'])
-            
 
             if (threshold == 0) or (spear[0] >= threshold) or (spear[0] <= -threshold) :
                 aux  = pd.DataFrame({'Indicator': [column],
@@ -127,14 +108,8 @@ def searchTimeSeries(threshold, start, end, time, df, mode = 'Region', zone = 'A
 
     df_result = df_result.sort_values(by=['GDP Spearman Corr'], ascending = False)
 
-    
-    #Filter perfect correlation due to low data.
-    #df_result.drop(df_result[df_result['P-value Spearman'] == 1].index, inplace=True )
-    #df_result.drop(df_result[df_result['P-value Spearman'] == -1].index, inplace=True )
 
     return df_result
-
-
 
 
 
