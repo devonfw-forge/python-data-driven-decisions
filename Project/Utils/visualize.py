@@ -112,7 +112,7 @@ def searchTimeSeries(threshold, start, end, time, df):
 
 
 
-def norm_by_country (df: pd.DataFrame):
+def norm (df: pd.DataFrame):
     country_list =  set(df.index.get_level_values('Country'))
     norm_df = pd.DataFrame(index = df.index)
     for country in country_list:
