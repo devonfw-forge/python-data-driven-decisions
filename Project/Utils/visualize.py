@@ -71,7 +71,7 @@ def search(threshold, mode = 'Region', zone = 'Afganisthan'):
 def searchTimeSeries(threshold, start, end, time, df):   
 
     """ 
-        For every zone in the list generate a dataframe with the indicators and the GDP correlation. This correlation must be higher than the given thresold.
+        For every zone in the list generate a dataframe with the indicators and the GDP correlation in the range of years. This correlation must be higher than the given thresold.
 
         PARAMETERS:
             threshold: float
@@ -112,7 +112,7 @@ def searchTimeSeries(threshold, start, end, time, df):
 
 
 
-def norm (df: pd.DataFrame):
+def normalize_by_country (df: pd.DataFrame):
     country_list =  set(df.index.get_level_values('Country'))
     norm_df = pd.DataFrame(index = df.index)
     for country in country_list:
