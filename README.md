@@ -133,7 +133,7 @@ After the long process of preparing the data, we started to analyse the correlat
 
 ## 15) Showing the charts
 
-Show the results
+![image](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-sharks/model-definition-diagram%20(1).png)
 
 
 ## Testing
