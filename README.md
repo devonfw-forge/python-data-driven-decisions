@@ -52,6 +52,18 @@ The indicators we will use are:
 - [Women Schooling Years](https://ourworldindata.org/grapher/mean-years-of-schooling-female): Average number of years women older than 25 participated in formal education.
 - [Men Schooling Years](https://ourworldindata.org/grapher/mean-years-of-schooling-male): Average number of years men older than 25 participated in formal education.
 - [% Education Expenditure](https://ourworldindata.org/grapher/share-of-education-in-government-expenditure): Total general government expenditure on education, expressed as a percentage of total general government expenditure on all sectors.
+- [Tertiary School Gender Parity](https://databank.worldbank.org/source/world-development-indicators): Gender parity index for gross enrollment ratio in tertiary education is the ratio of women to men enrolled at tertiary level in public and private schools.
+- [R&D expenditure %GDP](https://databank.worldbank.org/source/world-development-indicators): Gross domestic expenditures on research and development (R&D), expressed as a percent of GDP. 
+- [Researchers in R&D](https://databank.worldbank.org/source/world-development-indicators): The number of researchers engaged in Research &Development (R&D), expressed as per million.
+- [Employment in agriculture](https://databank.worldbank.org/source/world-development-indicators)
+- [Employment in industry](https://databank.worldbank.org/source/world-development-indicators): people working in the sector.
+- [Employment in services](https://databank.worldbank.org/source/world-development-indicators): people working in the sector.
+- [Cost business start-up](https://databank.worldbank.org/source/world-development-indicators): people working in the sector.
+- [% Female Employment](https://databank.worldbank.org/source/world-development-indicators): % women employed +15 years old.
+- [% Male Employment](https://databank.worldbank.org/source/world-development-indicators): % men employed +15 years old.
+- [% Vulnerable male employment](https://databank.worldbank.org/source/world-development-indicators): Vulnerable employment is contributing family workers and own-account workers as a percentage of total employment.
+- [% Vulnerable female employment](https://databank.worldbank.org/source/world-development-indicators): Vulnerable employment is contributing family workers and own-account workers as a percentage of total employment.
+
 
 ## 2) Select source of information
 
@@ -107,13 +119,21 @@ We thought it could be interesting to have entries for the aggregates of each re
 
 However, this method of aggregation resulted in very sharp correlation, both positive and negatives, very likely due to the direct correlation between the GDP and the weight used, the population. Thus, we also used a median of the correlations to show a represantative value of the correlations between GDP and indicators for each region.
 
-## 12) Analysing the data
+## 12) Clustering
+
+Interact with diferrent algorithms such as t-SNE for reducing dimensions of the data and different clustering algorithms to generate groups. This step is really important in order to see if there is a pattern in countries behaviour .
+
+## 13) Time Series
+
+Modify the dataframe changing the years. This has been developed with a Window (select a range of years) and a Displacement method ( place the GDP X years later).  Each one has a differnt approach and gives total total different results.
+
+## 14) Analysing the data
 
 After the long process of preparing the data, we started to analyse the correlations between the indicators and the GDP.
 
-## 13) Showing the charts
+## 15) Showing the charts
 
-[WIP]
+![image](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-sharks/model-definition-diagram%20(1).png)
 
 
 ## Testing
