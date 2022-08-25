@@ -19,15 +19,24 @@ def norm (df: pd.DataFrame, level: str = col_country):
 
     # Create an empty DataFrame which will be returned as a result. It will have the same index as the original.
     norm_df = pd.DataFrame(index = df.index)
-    element_list = list(set(df.index.get_level_values(level)))
-    element_list.sort()
-    for element in element_list:
+    if level is not None:
+        element_list = list(set(df.index.get_level_values(level)))
+        element_list.sort()
+        for element in element_list:
+            for col_name in df.columns:
+                # Select indicator for element.
+                col = df.loc[df.index.get_level_values(level) == element, col_name]
+                # Normalize values.
+                col = col.map(lambda x: (x - col.min()) / (col.max() - col.min()))
+                # Add them to the normalized DataFrame.
+                norm_df.loc[df.index.get_level_values(level) == element, col_name] = col
+    else:
         for col_name in df.columns:
-            # Select indicator for element.
-            col = df.loc[df.index.get_level_values(level) == element, col_name]
-            # Normalize values.
-            col = col.map(lambda x: (x - col.min()) / (col.max() - col.min()))
-            # Add them to the normalized DataFrame.
-            norm_df.loc[df.index.get_level_values(level) == element, col_name] = col
+                # Select indicator for element.
+                col = df.loc[:, col_name]
+                # Normalize values.
+                col = col.map(lambda x: (x - col.min()) / (col.max() - col.min()))
+                # Add them to the normalized DataFrame.
+                norm_df.loc[:, col_name] = col
 
     return norm_df

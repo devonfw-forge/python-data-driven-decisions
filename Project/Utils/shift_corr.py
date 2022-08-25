@@ -30,9 +30,6 @@ def shift_corr (df: pd.DataFrame, level: str, col: str = col_gdp, confidence: fl
 
     """
 
-    # Normalize the values of the DataFrame.
-    norm_df = norm(df)
-
     # Identify the range of years in our Dataframe.
     min_year = df.index.get_level_values(col_year).min()
     max_year = df.index.get_level_values(col_year).max()
@@ -54,14 +51,14 @@ def shift_corr (df: pd.DataFrame, level: str, col: str = col_gdp, confidence: fl
             # A positive shift studies the effect of the indicators on the GDP.
             # A negative shift studies the effect of the GDP on the indicators.
             min_year_gdp = min_year + max(shift, 0)
-            max_year_gdp = max_year - min(shift, 0)
+            max_year_gdp = max_year + min(shift, 0)
 
-            min_year_ind = min_year + min(shift, 0)
+            min_year_ind = min_year - min(shift, 0)
             max_year_ind = max_year - max(shift, 0)
 
             # Store a Series for the GDP column and a Dataframe for all the other columns with indicators.
-            col_s = norm_df.loc[(df.index.get_level_values(col_year) >= min_year_gdp) & (norm_df.index.get_level_values(level) == area), col]
-            ind_df = norm_df.loc[(df.index.get_level_values(col_year) <= max_year_ind) & (norm_df.index.get_level_values(level) == area)].drop(columns = col)
+            col_s = df.loc[(min_year_gdp <= df.index.get_level_values(col_year)) & (df.index.get_level_values(col_year) <= max_year_gdp) & (df.index.get_level_values(level) == area), col]
+            ind_df = df.loc[(min_year_ind <= df.index.get_level_values(col_year)) & (df.index.get_level_values(col_year) <= max_year_ind) & (df.index.get_level_values(level) == area)].drop(columns = col)
 
             # Sort both so they have the same order and can have their index dropped. This is mandatory to calculate the correlation having different years in their index.
             col_s.sort_index(level = [col_country, col_year])
