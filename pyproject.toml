@@ -17,6 +17,9 @@ sklearn = "^0.0"
 plotly = "^5.9.0"
 coverage = "^6.4.2"
 matplotlib-venn = "^0.11.7"
+voila = "^0.3.6"
+nbimporter = "^0.3.4"
+voila-gridstack = "^0.3.0"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"

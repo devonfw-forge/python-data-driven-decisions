@@ -95,6 +95,17 @@ pycodestyle = ">=2.8.0"
 toml = "*"
 
 [[package]]
+name = "babel"
+version = "2.10.3"
+description = "Internationalization utilities"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+pytz = ">=2015.7"
+
+[[package]]
 name = "backcall"
 version = "0.2.0"
 description = "Specifications for callback functions passed in to an API"
@@ -417,6 +428,17 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "json5"
+version = "0.9.10"
+description = "A Python implementation of the JSON5 data format."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+dev = ["hypothesis"]
+
+[[package]]
 name = "jsonschema"
 version = "4.6.1"
 description = "An implementation of JSON Schema validation for Python"
@@ -489,7 +511,7 @@ test = ["pexpect"]
 
 [[package]]
 name = "jupyter-core"
-version = "4.10.0"
+version = "4.11.1"
 description = "Jupyter core package. A base package on which Jupyter projects rely."
 category = "main"
 optional = false
@@ -554,10 +576,31 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "jupyterlab-server"
+version = "2.15.1"
+description = "A set of server components for JupyterLab and JupyterLab like applications."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+babel = "*"
+jinja2 = ">=3.0.3"
+json5 = "*"
+jsonschema = ">=3.0.1"
+jupyter-server = ">=1.8,<2"
+packaging = "*"
+requests = "*"
+
+[package.extras]
+openapi = ["openapi-core (>=0.14.2)", "ruamel-yaml"]
+test = ["codecov", "ipykernel", "jupyter-server", "openapi-core (>=0.14.2)", "openapi-spec-validator (<0.5)", "pytest-console-scripts", "pytest-cov", "pytest (>=5.3.2)", "ruamel-yaml", "strict-rfc3339"]
+
+[[package]]
 name = "jupyterlab-widgets"
 version = "1.1.1"
 description = "A JupyterLab extension."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -630,7 +673,7 @@ python-versions = "*"
 
 [[package]]
 name = "nbclient"
-version = "0.6.5"
+version = "0.5.13"
 description = "A client library for executing notebooks. Formerly nbconvert's ExecutePreprocessor."
 category = "main"
 optional = false
@@ -640,11 +683,11 @@ python-versions = ">=3.7.0"
 jupyter-client = ">=6.1.5"
 nbformat = ">=5.0"
 nest-asyncio = "*"
-traitlets = ">=5.2.2"
+traitlets = ">=5.0.0"
 
 [package.extras]
-sphinx = ["autodoc-traits", "mock", "moto", "myst-parser", "Sphinx (>=1.7)", "sphinx-book-theme"]
-test = ["black", "check-manifest", "flake8", "ipykernel", "ipython (<8.0.0)", "ipywidgets (<8.0.0)", "mypy", "pip (>=18.1)", "pre-commit", "pytest (>=4.1)", "pytest-asyncio", "pytest-cov (>=2.6.1)", "setuptools (>=60.0)", "testpath", "twine (>=1.11.0)", "xmltodict"]
+sphinx = ["Sphinx (>=1.7)", "sphinx-book-theme", "mock", "moto", "myst-parser"]
+test = ["ipython (<8.0.0)", "ipykernel", "ipywidgets (<8.0.0)", "pytest (>=4.1)", "pytest-asyncio", "pytest-cov (>=2.6.1)", "check-manifest", "flake8", "mypy", "xmltodict", "black", "pip (>=18.1)", "wheel (>=0.31.0)", "setuptools (>=38.6.0)", "twine (>=1.11.0)"]
 
 [[package]]
 name = "nbconvert"
@@ -718,6 +761,14 @@ traitlets = ">=5.1"
 
 [package.extras]
 test = ["check-manifest", "testpath", "pytest", "pre-commit"]
+
+[[package]]
+name = "nbimporter"
+version = "0.3.4"
+description = "Import IPython notebooks as modules"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "nest-asyncio"
@@ -1299,6 +1350,45 @@ secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "cer
 socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
+name = "voila"
+version = "0.3.6"
+description = "Voilà turns Jupyter notebooks into standalone web applications"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+jupyter-client = ">=6.1.3,<8"
+jupyter-core = ">=4.11.0"
+jupyter-server = ">=1.18,<2.0.0"
+jupyterlab-server = ">=2.3.0,<3"
+nbclient = ">=0.4.0,<0.6"
+nbconvert = ">=6.4.5,<7"
+traitlets = ">=5.0.3,<6"
+websockets = ">=9.0"
+
+[package.extras]
+visual_test = ["jupyterlab-miami-nights (==0.3.2)", "ipyvolume", "ipympl (==0.8.7)", "scipy", "bqplot", "jupyterlab (>=3.0,<4.0)"]
+test = ["pytest-tornasync", "pytest-rerunfailures", "pytest", "mock", "matplotlib", "ipywidgets", "pandas", "numpy"]
+dev = ["jupyter-releaser (>=0.6,<1.0)", "bump2version", "black"]
+
+[[package]]
+name = "voila-gridstack"
+version = "0.3.0"
+description = "A GridStack template for Voila."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+jupyterlab-widgets = ">=1.0,<2.0"
+voila = ">=0.2.0,<0.4.0"
+
+[package.extras]
+dev = ["click", "jupyter-releaser (>=0.9,<1.0)", "tbump (>=6.4,<7.0)"]
+test = ["ipykernel", "pytest", "pytest-tornasync", "lxml"]
+
+[[package]]
 name = "wcwidth"
 version = "0.2.5"
 description = "Measures the displayed width of unicode strings in a terminal"
@@ -1328,6 +1418,14 @@ optional = ["python-socks", "wsaccel"]
 test = ["websockets"]
 
 [[package]]
+name = "websockets"
+version = "10.3"
+description = "An implementation of the WebSocket Protocol (RFC 6455 & 7692)"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "widgetsnbextension"
 version = "3.6.1"
 description = "IPython HTML widgets for Jupyter"
@@ -1341,7 +1439,7 @@ notebook = ">=4.4.1"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.10.5"
-content-hash = "479f2fb7e67c0e807e37d4695aaf0276a1c4b273ac67c3214c93646fdac00fa7"
+content-hash = "b10bc15b9d4878e5df8f98e12872fad942fbe6da2820f47776e4dddcb89dc5c6"
 
 [metadata.files]
 anyio = [
@@ -1388,6 +1486,7 @@ attrs = [
     {file = "attrs-21.4.0.tar.gz", hash = "sha256:626ba8234211db98e869df76230a137c4c40a12d72445c45d5f5b716f076e2fd"},
 ]
 autopep8 = []
+babel = []
 backcall = [
     {file = "backcall-0.2.0-py2.py3-none-any.whl", hash = "sha256:fbbce6a29f263178a1f7915c1940bde0ec2b2a967566fe1c65c1dfb7422bd255"},
     {file = "backcall-0.2.0.tar.gz", hash = "sha256:5cbdbf27be5e7cfadb448baf0aa95508f91f2bbc6c6437cd9cd06e2a4c215e1e"},
@@ -1564,6 +1663,7 @@ jinja2 = [
     {file = "Jinja2-3.1.2.tar.gz", hash = "sha256:31351a702a408a9e7595a8fc6150fc3f43bb6bf7e319770cbc0db9df9437e852"},
 ]
 joblib = []
+json5 = []
 jsonschema = [
     {file = "jsonschema-4.6.1-py3-none-any.whl", hash = "sha256:5eb781753403847fb320f05e9ab2191725b58c5e7f97f1bed63285ca423159bc"},
     {file = "jsonschema-4.6.1.tar.gz", hash = "sha256:ec2802e6a37517f09d47d9ba107947589ae1d25ff557b925d83a321fc2aa5d3b"},
@@ -1581,10 +1681,7 @@ jupyter-console = [
     {file = "jupyter_console-6.4.4-py3-none-any.whl", hash = "sha256:756df7f4f60c986e7bc0172e4493d3830a7e6e75c08750bbe59c0a5403ad6dee"},
     {file = "jupyter_console-6.4.4.tar.gz", hash = "sha256:172f5335e31d600df61613a97b7f0352f2c8250bbd1092ef2d658f77249f89fb"},
 ]
-jupyter-core = [
-    {file = "jupyter_core-4.10.0-py3-none-any.whl", hash = "sha256:e7f5212177af7ab34179690140f188aa9bf3d322d8155ed972cbded19f55b6f3"},
-    {file = "jupyter_core-4.10.0.tar.gz", hash = "sha256:a6de44b16b7b31d7271130c71a6792c4040f077011961138afed5e5e73181aec"},
-]
+jupyter-core = []
 jupyter-server = [
     {file = "jupyter_server-1.18.0-py3-none-any.whl", hash = "sha256:06103b71740eaa80aac1b3918da1b22125d3d649386c91fa236de753934bd6c8"},
     {file = "jupyter_server-1.18.0.tar.gz", hash = "sha256:b65ea1d24038dc32c80b916c89005ae8d1d70f6ede0d314230e93b329b7e845a"},
@@ -1597,6 +1694,7 @@ jupyterlab-pygments = [
     {file = "jupyterlab_pygments-0.2.2-py2.py3-none-any.whl", hash = "sha256:2405800db07c9f770863bcf8049a529c3dd4d3e28536638bd7c1c01d2748309f"},
     {file = "jupyterlab_pygments-0.2.2.tar.gz", hash = "sha256:7405d7fde60819d905a9fa8ce89e4cd830e318cdad22a0030f7a901da705585d"},
 ]
+jupyterlab-server = []
 jupyterlab-widgets = [
     {file = "jupyterlab_widgets-1.1.1-py3-none-any.whl", hash = "sha256:90ab47d99da03a3697074acb23b2975ead1d6171aa41cb2812041a7f2a08177a"},
     {file = "jupyterlab_widgets-1.1.1.tar.gz", hash = "sha256:67d0ef1e407e0c42c8ab60b9d901cd7a4c68923650763f75bf17fb06c1943b79"},
@@ -1734,10 +1832,7 @@ mistune = [
     {file = "mistune-0.8.4-py2.py3-none-any.whl", hash = "sha256:88a1051873018da288eee8538d476dffe1262495144b33ecb586c4ab266bb8d4"},
     {file = "mistune-0.8.4.tar.gz", hash = "sha256:59a3429db53c50b5c6bcc8a07f8848cb00d7dc8bdb431a4ab41920d201d4756e"},
 ]
-nbclient = [
-    {file = "nbclient-0.6.5-py3-none-any.whl", hash = "sha256:c0a942c8e68e2883cfa0ae73d85e88e50a5f58a8d68c4ed5343e76c184a61ff7"},
-    {file = "nbclient-0.6.5.tar.gz", hash = "sha256:9565739f326a9148553b04efa387ccce84c4acd0e57d94daeea4b8efb50ea966"},
-]
+nbclient = []
 nbconvert = [
     {file = "nbconvert-6.5.0-py3-none-any.whl", hash = "sha256:c56dd0b8978a1811a5654f74c727ff16ca87dd5a43abd435a1c49b840fcd8360"},
     {file = "nbconvert-6.5.0.tar.gz", hash = "sha256:223e46e27abe8596b8aed54301fadbba433b7ffea8196a68fd7b1ff509eee99d"},
@@ -1750,6 +1845,7 @@ nbformat = [
     {file = "nbformat-5.4.0-py3-none-any.whl", hash = "sha256:0d6072aaec95dddc39735c144ee8bbc6589c383fb462e4058abc855348152dad"},
     {file = "nbformat-5.4.0.tar.gz", hash = "sha256:44ba5ca6acb80c5d5a500f1e5b83ede8cbe364d5a495c4c8cf60aaf1ba656501"},
 ]
+nbimporter = []
 nest-asyncio = [
     {file = "nest_asyncio-1.5.5-py3-none-any.whl", hash = "sha256:b98e3ec1b246135e4642eceffa5a6c23a3ab12c82ff816a92c612d68205813b2"},
     {file = "nest_asyncio-1.5.5.tar.gz", hash = "sha256:e442291cd942698be619823a17a86a5759eabe1f8613084790de189fe9e16d65"},
@@ -2187,6 +2283,8 @@ urllib3 = [
     {file = "urllib3-1.26.9-py2.py3-none-any.whl", hash = "sha256:44ece4d53fb1706f667c9bd1c648f5469a2ec925fcf3a776667042d645472c14"},
     {file = "urllib3-1.26.9.tar.gz", hash = "sha256:aabaf16477806a5e1dd19aa41f8c2b7950dd3c746362d7e3223dbe6de6ac448e"},
 ]
+voila = []
+voila-gridstack = []
 wcwidth = [
     {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},
     {file = "wcwidth-0.2.5.tar.gz", hash = "sha256:c4d647b99872929fdb7bdcaa4fbe7f01413ed3d98077df798530e5b04f116c83"},
@@ -2199,6 +2297,7 @@ websocket-client = [
     {file = "websocket-client-1.3.3.tar.gz", hash = "sha256:d58c5f284d6a9bf8379dab423259fe8f85b70d5fa5d2916d5791a84594b122b1"},
     {file = "websocket_client-1.3.3-py3-none-any.whl", hash = "sha256:5d55652dc1d0b3c734f044337d929aaf83f4f9138816ec680c1aefefb4dc4877"},
 ]
+websockets = []
 widgetsnbextension = [
     {file = "widgetsnbextension-3.6.1-py2.py3-none-any.whl", hash = "sha256:954e0faefdd414e4e013f17dbc7fd86f24cf1d243a3ac85d5f0fc2c2d2b50c66"},
     {file = "widgetsnbextension-3.6.1.tar.gz", hash = "sha256:9c84ae64c2893c7cbe2eaafc7505221a795c27d68938454034ac487319a75b10"},
