@@ -125,3 +125,15 @@ def normalize_by_country (df: pd.DataFrame):
             norm_df.loc[df.index.get_level_values('Country') == country, col_name] = col
     return norm_df
 
+
+def get_zone(df, countries_by_region, zone: str, by: str, ):
+    if by == 'Country':
+        df_zone  = df.loc[df.index.get_level_values('Country') == zone]
+    elif by == 'Region':
+        df_zone = countries_by_region[zone]
+    
+    return df_zone
+
+def get_years(df, years):
+    df.loc[(df.index.get_level_values("Year") >= years[0]) & (df.index.get_level_values("Year") <= years[1])]
+    return df

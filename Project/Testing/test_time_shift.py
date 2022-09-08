@@ -25,9 +25,8 @@ class Test_Gold(unittest.TestCase):
     def test_region(self):
         df = pd.read_csv(read_path + source_df, index_col = col_index)
         region = random.choice(df.index.get_level_values(col_region).unique())
+        region = 'North America'
         df_region = df.loc[df.index.get_level_values(col_region) == region]
-        #country = random.choice(df.index.get_level_values(col_country).unique())
-
         print('Region: ' + region)
 
         st_time = datetime.now()
@@ -35,11 +34,20 @@ class Test_Gold(unittest.TestCase):
         f_time = datetime.now()
         total_time = f_time - st_time
 
-        max_s = pd.Series(df_region.apply(lambda x: x.max()))
-        min_s = pd.Series(df_region.apply(lambda x: x.min()))
+        np.testing.assert_array_equal(df.columns, df_region.columns)
+        np.testing.assert_array_equal(df_region.columns, norm_df_region.columns)
 
-        max_norm_s = pd.Series(norm_df_region.apply(lambda x: x.max()))
-        min_norm_s = pd.Series(norm_df_region.apply(lambda x: x.min()))
+        clean_df_region = df_region.loc[:, df_region.count().map(lambda x: True if x > 0 else False)]
+        clean_norm_df_region = norm_df_region.loc[:, norm_df_region.count().map(lambda x: True if x > 0 else False)]
+
+        max_s = pd.Series(clean_df_region.apply(lambda x: x.max()))
+        min_s = pd.Series(clean_df_region.apply(lambda x: x.min()))
+
+        max_norm_s = pd.Series(clean_norm_df_region.apply(lambda x: x.max()))
+        min_norm_s = pd.Series(clean_norm_df_region.apply(lambda x: x.min()))
+
+        self.assertTrue(all(max_norm_s.map(lambda x: x == 1.0)))
+        self.assertTrue(all(min_norm_s.map(lambda x: x == 0.0)))
 
         """ max_s_index = max_s.map(lambda x: df_region.get_loc(x))
         min_s_index = min_s.map(lambda x: df_region.get_loc(x))
@@ -47,18 +55,22 @@ class Test_Gold(unittest.TestCase):
         max_norm_s_index = max_norm_s.map(lambda x: df_region.get_loc(x))
         min_norm_s_index = min_norm_s.map(lambda x: df_region.get_loc(x))
  """
-        np.testing.assert_array_equal(df.columns, df_region.columns)
-        np.testing.assert_array_equal(df_region.columns, norm_df_region.columns)
+        
 
-        print(max_norm_s.map(lambda x: x == 1.0))
+        """ print(max_norm_s.map(lambda x: x == 1.0))
+        print('Counts')
+        print(df_region.count())
+        print(df_region.count().map(lambda x: True if x > 0 else False))
 
-        self.assertTrue(all(max_norm_s.map(lambda x: x == 1.0)))
-        self.assertTrue(all(min_norm_s.map(lambda x: x == 0.0)))
+        clean_region_df = df_region.loc[:, df_region.count().map(lambda x: True if x > 0 else False)]
+        print(clean_region_df.count()) """
+
+        
 
         """ np.testing.assert_array_equal(max_s_index, max_norm_s_index)
         np.testing.assert_array_equal(min_s_index, min_norm_s_index) """
 
-        print('Time: ' + str(total_time.total_seconds()))
+        print('Normalization time: ' + str(total_time.total_seconds()))
 
     """ def test_aggregate_region(self):
         df = pd.read_csv(read_path + source_df)

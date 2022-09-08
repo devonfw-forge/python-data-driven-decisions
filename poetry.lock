@@ -600,7 +600,7 @@ test = ["codecov", "ipykernel", "jupyter-server", "openapi-core (>=0.14.2)", "op
 name = "jupyterlab-widgets"
 version = "1.1.1"
 description = "A JupyterLab extension."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -761,6 +761,14 @@ traitlets = ">=5.1"
 
 [package.extras]
 test = ["check-manifest", "testpath", "pytest", "pre-commit"]
+
+[[package]]
+name = "nbimporter"
+version = "0.3.4"
+description = "Import IPython notebooks as modules"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "nest-asyncio"
@@ -1365,6 +1373,22 @@ test = ["pytest-tornasync", "pytest-rerunfailures", "pytest", "mock", "matplotli
 dev = ["jupyter-releaser (>=0.6,<1.0)", "bump2version", "black"]
 
 [[package]]
+name = "voila-gridstack"
+version = "0.3.0"
+description = "A GridStack template for Voila."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+jupyterlab-widgets = ">=1.0,<2.0"
+voila = ">=0.2.0,<0.4.0"
+
+[package.extras]
+dev = ["click", "jupyter-releaser (>=0.9,<1.0)", "tbump (>=6.4,<7.0)"]
+test = ["ipykernel", "pytest", "pytest-tornasync", "lxml"]
+
+[[package]]
 name = "wcwidth"
 version = "0.2.5"
 description = "Measures the displayed width of unicode strings in a terminal"
@@ -1415,7 +1439,7 @@ notebook = ">=4.4.1"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.10.5"
-content-hash = "f29ad1f202b607903c932bb924019517249e5f3cbf4b2cd6c3deede4631b512a"
+content-hash = "b10bc15b9d4878e5df8f98e12872fad942fbe6da2820f47776e4dddcb89dc5c6"
 
 [metadata.files]
 anyio = [
@@ -1821,6 +1845,7 @@ nbformat = [
     {file = "nbformat-5.4.0-py3-none-any.whl", hash = "sha256:0d6072aaec95dddc39735c144ee8bbc6589c383fb462e4058abc855348152dad"},
     {file = "nbformat-5.4.0.tar.gz", hash = "sha256:44ba5ca6acb80c5d5a500f1e5b83ede8cbe364d5a495c4c8cf60aaf1ba656501"},
 ]
+nbimporter = []
 nest-asyncio = [
     {file = "nest_asyncio-1.5.5-py3-none-any.whl", hash = "sha256:b98e3ec1b246135e4642eceffa5a6c23a3ab12c82ff816a92c612d68205813b2"},
     {file = "nest_asyncio-1.5.5.tar.gz", hash = "sha256:e442291cd942698be619823a17a86a5759eabe1f8613084790de189fe9e16d65"},
@@ -2259,6 +2284,7 @@ urllib3 = [
     {file = "urllib3-1.26.9.tar.gz", hash = "sha256:aabaf16477806a5e1dd19aa41f8c2b7950dd3c746362d7e3223dbe6de6ac448e"},
 ]
 voila = []
+voila-gridstack = []
 wcwidth = [
     {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},
     {file = "wcwidth-0.2.5.tar.gz", hash = "sha256:c4d647b99872929fdb7bdcaa4fbe7f01413ed3d98077df798530e5b04f116c83"},
