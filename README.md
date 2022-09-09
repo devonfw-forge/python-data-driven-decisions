@@ -127,11 +127,15 @@ Interact with diferrent algorithms such as t-SNE for reducing dimensions of the 
 
 Modify the dataframe changing the years. This has been developed with a Window (select a range of years) and a Displacement method ( place the GDP X years later).  Each one has a differnt approach and gives total total different results.
 
-## 14) Analysing the data
+## 14) Predicting GDP
+
+Having all the previous data analysis it can be useful to other studies. In this case, using the clustering output we will predict the next year GDP.
+
+## 15) Analysing the data
 
 After the long process of preparing the data, we started to analyse the correlations between the indicators and the GDP.
 
-## 15) Showing the charts
+## 16) Showing the charts
 
 ![image](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-sharks/model-definition-diagram%20(1).png)
 
