@@ -7,3 +7,4 @@ The project will be developed by 2 teams in parallel. You can find more informat
 
 - [The Big Three](https://github.com/devonfw-forge/python-data-driven-decisions/tree/main-the-big-three)
 - [Data Sharks](https://github.com/devonfw-forge/python-data-driven-decisions/tree/main-data-sharks)
+- [Data Training](https://github.com/devonfw-forge/python-data-driven-decisions/tree/main-data-training)
