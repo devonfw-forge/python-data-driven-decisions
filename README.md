@@ -12,7 +12,14 @@ The project will be developed by 2 teams in parallel. You can find more informat
 ____________________________________________________________________________________________________________________
 # Execute the project
 Download the files in the 6  branch (Datraining_load_1 to Datatraining_visualization_6), and place them in separate folders
-Execute the notebooks in the following order: Data_load, Data_integration, Data_normalization, Data_outliers, Data_filling, Data_visualization. This will create a series of output DataFrames as .csv files.
+Execute the notebooks in the following order: 
+
+Data_load, Data_integration, 
+Data_normalization, Data_outliers, 
+Data_filling, 
+Data_visualization. 
+
+This will create a series of output DataFrames as .csv files.
 
 # Explanation of the followed process
 The Hypothesis:
