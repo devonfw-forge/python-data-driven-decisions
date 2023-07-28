@@ -47,5 +47,5 @@ In order to study the correlation between the economic indicators and some socio
 I choose to measure the economic growth to compare the indicators with the GDP of the country.
 
 # 2nd step : Select source of information
- I chose to extract datasets about these indicators from the website [Our world in data] (https://ourworldindata.org/)
+ I chose to extract datasets about these indicators from the website [Our world in data](https://ourworldindata.org/)
 
