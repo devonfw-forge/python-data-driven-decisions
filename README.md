@@ -11,11 +11,11 @@ The project will be developed by 2 teams in parallel. You can find more informat
 
 ____________________________________________________________________________________________________________________
 # Execute the project
-Download the files in the 6  branch (Datraining_load_1 to Datatraining_visualization_6), and place them in separate folders
+Download the files in the 6  branch (Datraining_load_1 to Datatraining_visualization_6), and place them in separate folders  
 Execute the notebooks in the following order: 
 
-[Data_load](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-training/Data_load.ipynb) 
-[Data_normalization](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-training/Data_normalization.ipynb)
+[Data_load](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-training/Data_load.ipynb)    
+[Data_normalization](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-training/Data_normalization.ipynb)    
 Data_outliers, 
 Data_filling, 
 Data_visualization. 
