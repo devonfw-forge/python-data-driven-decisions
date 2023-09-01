@@ -45,7 +45,8 @@ I choose to measure the economic growth to compare the indicators with the GDP o
 
 #  Select source of information
  I choose to extract datasets about these indicators from the website [Our world in data](https://ourworldindata.org/)
-
+ 
 
 # Showing the charts 
 
+![image](https://github.com/devonfw-forge/python-data-driven-decisions/blob/Drawing/drawing.drawio)
