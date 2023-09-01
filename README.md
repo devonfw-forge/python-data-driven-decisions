@@ -50,3 +50,7 @@ I choose to measure the economic growth to compare the indicators with the GDP o
 # Showing the charts 
 
 ![image](https://github.com/devonfw-forge/python-data-driven-decisions/blob/Drawing/drawing.drawio)
+
+ A diagram of a company
+
+Description automatically generated
