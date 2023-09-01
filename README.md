@@ -17,8 +17,8 @@ Execute the notebooks in the following order:
 [Data_normalization and outliers](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-training/Data_normalization_outliers.ipynb)       
 [Data_filling](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-training/Data_filling_NaN_values.ipynb)     
 [Data clustering by countries](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-training/Data_clustering_countries.ipynb)   
-[Data clustering by indicators](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-training/Data_clustering_indicators.ipynb)
-Data predictions
+[Data clustering by indicators](https://github.com/devonfw-forge/python-data-driven-decisions/blob/main-data-training/Data_clustering_indicators.ipynb)  
+[Data predictions]()  
 
 This will create a series of output DataFrames as .csv files.
 
